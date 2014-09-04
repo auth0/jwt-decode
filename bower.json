@@ -1,9 +1,6 @@
 {
-  "//": "experimental bower support",
   "name": "jwt-decode",
   "version": "1.0.0",
-  "main": "lib/index.js",
-  "dependencies": {
-    "Base64": "https://github.com/davidchambers/Base64.js.git"
-  }
+  "main": "build/jwt-decode.js",
+  "dependencies": {}
 }
