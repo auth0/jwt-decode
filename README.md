@@ -1,7 +1,3 @@
-<a href="https://auth0.com">
- <img src="https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png" />
-</a>
-
 __jwt-decode__ is a small browser library that helps decoding JWTs token which are Base64Url encoded.
 
 __IMPORTANT:__ This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](http://github.com/auth0/jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
