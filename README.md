@@ -1,6 +1,6 @@
-[![NPM version](https://badge.fury.io/js/decode-jwt.png)](http://badge.fury.io/js/decode-jwt)
-
-[![Auth0](http://blog.auth0.com.s3.amazonaws.com/logo-290x200-letters.png)](http://auth0.com)
+<a href="https://auth0.com">
+ <img src="https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png" />
+</a>
 
 __jwt-decode__ is a small browser library that helps decoding JWTs token which are Base64Url encoded.
 
