@@ -23,6 +23,8 @@ console.log(decoded);
  */
 ~~~
 
+**Note:** A falsy token will throw an error.
+
 ## Develop
 
 Run `grunt dev` and fire a browser at http://localhost:9999/test_harness.html.
