@@ -25,6 +25,12 @@ console.log(decoded);
 
 **Note:** A falsy token will throw an error.
 
+Can also be used with [browserify] or [webpack] by doing `npm install jwt-decode` and requiring:
+
+~~~javascript
+var jwtDecode = require('jwt-decode');
+~~~
+
 ## Develop
 
 Run `grunt dev` and fire a browser at http://localhost:9999/test_harness.html.
@@ -40,3 +46,6 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
+
+[browserify]: http://browserify.org
+[webpack]: http://webpack.github.io/
