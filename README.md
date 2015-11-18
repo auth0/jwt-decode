@@ -31,6 +31,10 @@ Can also be used with [browserify] or [webpack] by doing `npm install jwt-decode
 var jwtDecode = require('jwt-decode');
 ~~~
 
+## Polymer Web Component
+
+Can also be installed and used with [Polymer-based wrapper](https://github.com/firmfirm/jwt-decode-element).
+
 ## Develop
 
 Run `grunt dev` and fire a browser at http://localhost:9999/test_harness.html.
