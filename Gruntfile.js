@@ -65,6 +65,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask("build",         ["clean", "browserify:dist", "browserify:dist", "uglify:min"]);
   grunt.registerTask("dev",           ["connect:test", "watch", "build"]);
-  grunt.registerTask("test",          ["exec:test-phantom"]);
+  grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
 };
