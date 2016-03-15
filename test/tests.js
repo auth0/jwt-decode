@@ -1,5 +1,13 @@
 var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo';
 
+if (typeof jwt_decode === 'undefined') {
+  var jwt_decode = require('../');
+}
+
+if (typeof expect === 'undefined') {
+  var expect = require('expect.js');
+}
+
 describe('jwt-decode', function () {
 
   it('should fail to construct without a clientID', function () {

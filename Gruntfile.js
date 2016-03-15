@@ -54,6 +54,11 @@ module.exports = function(grunt) {
         cmd: 'node_modules/testem/testem.js ci -l bs_iphone_5', //disable ,bs_android_41: is not working
         stdout: true,
         stderr: true
+      },
+      'test-node': {
+        cmd: 'node_modules/.bin/mocha', //disable ,bs_android_41: is not working
+        stdout: true,
+        stderr: true
       }
     }
   });
@@ -66,5 +71,6 @@ module.exports = function(grunt) {
   grunt.registerTask("build",         ["clean", "browserify:dist", "browserify:dist", "uglify:min"]);
   grunt.registerTask("dev",           ["connect:test", "watch", "build"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
+  grunt.registerTask("test-node",     ["exec:test-node"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
 };
