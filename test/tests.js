@@ -17,6 +17,12 @@ describe('jwt-decode', function () {
     expect(decoded.foo).to.equal('bar');
   });
 
+  it('should return header information', function () {
+    var decoded = jwt_decode(token, { header: true });
+    expect(decoded.typ).to.equal('JWT');
+    expect(decoded.alg).to.equal('HS256');
+  });
+
   it('should work with utf8 tokens', function () {
     var utf8_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSm9zw6kiLCJpYXQiOjE0MjU2NDQ5NjZ9.1CfFtdGUPs6q8kT3OGQSVlhEMdbuX0HfNSqum0023a0";
     var decoded = jwt_decode(utf8_token);
