@@ -16,7 +16,9 @@
   },
   "author": "Jose F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "abab": "^1.0.3"
+  },
   "devDependencies": {
     "browserify": "~2.35.0",
     "uglify-js": "~2.4.0",
