@@ -1,6 +1,6 @@
 {
   "name": "jwt-decode",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Decode JWT tokens, mostly useful for browser applications.",
   "main": "lib/index.js",
   "keywords": [
