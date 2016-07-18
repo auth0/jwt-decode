@@ -17,7 +17,9 @@ module.exports = function(grunt) {
           'build/jwt-decode.js': ['standalone.js'],
         },
         options: {
-          debug: true
+          browserifyOptions: {
+            debug: true
+          }
         }
       }
     },
