@@ -1,11 +1,12 @@
 {
-  "name": "jwt-decode",
-  "version": "2.1.0",
-  "description": "Decode JWT tokens, mostly useful for browser applications.",
+  "name": "jwt-decode-module",
+  "version": "1.0.0",
+  "description": "Decode JWT tokens, mostly useful for browser applications and can be used as a module",
   "main": "lib/index.js",
   "keywords": [
     "jwt",
-    "browser"
+    "browser",
+    "es2015"
   ],
   "scripts": {
     "test": "grunt test"
