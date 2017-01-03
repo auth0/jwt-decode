@@ -13,14 +13,17 @@ module.exports = function(grunt) {
     },
     browserify: {
       dist: {
+          options: {
+              transform: [
+                  ["babelify",  {presets: ['es2015']}]
+              ],
+              browserifyOptions: {
+                  debug: true
+              }
+          },
         files: {
           'build/jwt-decode.js': ['standalone.js'],
         },
-        options: {
-          browserifyOptions: {
-            debug: true
-          }
-        }
       }
     },
     uglify: {
@@ -33,7 +36,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ["build/"],
+      build: ["build/"]
     },
     watch: {
       another: {
