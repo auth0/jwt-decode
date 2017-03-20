@@ -34,4 +34,20 @@ describe('jwt-decode', function () {
     var decoded = jwt_decode(binary_token);
     expect(decoded.name).to.equal('José');
   });
+
+  it('should throw InvalidTokenError on nonstring', function () {
+    var bad_token = null;
+    expect(function () { jwt_decode(bad_token); })
+      .to.throwException(function (e) {
+        expect(e.name).to.be('InvalidTokenError');
+      });
+  });
+
+  it('should throw InvalidTokenError on string that is not a token', function () {
+    var bad_token = "fubar";
+    expect(function () { jwt_decode(bad_token); })
+      .to.throwException(function (e) {
+        expect(e.name).to.be('InvalidTokenError');
+      });
+  });
 });
