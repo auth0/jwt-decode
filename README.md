@@ -22,9 +22,15 @@ console.log(decoded);
  *   iat: 1393268893  }
  */
 
- // decode header by passing in options:
- var decoded = jwt_decode(token, { header: true });
- // useful for when you need `kid` to verify a JWT.
+ // decode header by passing in options (useful for when you need `kid` to verify a JWT):
+ var decodedHeader = jwt_decode(token, { header: true });
+ console.log(decodedHeader)
+
+ /* prints:
+  * { typ: "JWT",
+  *   alg: HS256 }
+  */
+
 ~~~
 
 **Note:** A falsy token will throw an error.
