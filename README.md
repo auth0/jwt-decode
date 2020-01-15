@@ -28,7 +28,7 @@ console.log(decoded);
 
  /* prints:
   * { typ: "JWT",
-  *   alg: HS256 }
+  *   alg: "HS256" }
   */
 
 ~~~
