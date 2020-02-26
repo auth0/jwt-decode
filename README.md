@@ -33,7 +33,7 @@ console.log(decoded);
 
 ~~~
 
-**Note:** A falsy token will throw an error.
+**Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
 
 Can also be used with [browserify] or [webpack] by doing `npm install jwt-decode` and requiring:
 
