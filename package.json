@@ -35,6 +35,9 @@
     "uglify-js": "^2.8.29"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "build/",
+    "jwt-decode.html",
+    "standalone.js"
   ]
 }
