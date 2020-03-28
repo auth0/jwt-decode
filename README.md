@@ -45,6 +45,14 @@ var jwtDecode = require('jwt-decode');
 
 Can also be installed and used with [Polymer-based wrapper](https://github.com/firmfirm/f-jwt-decode).
 
+## Include with a script tag
+
+Copy the file jwt-decode.min.js from the build/ folder to your project somewhere, then include like so:
+
+~~~html
+<script src="jwt-decode.min.js"></script>
+~~~
+
 ## Develop
 
 Run `grunt dev` and fire a browser at http://localhost:9999/test_harness.html.
