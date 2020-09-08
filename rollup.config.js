@@ -6,8 +6,6 @@ import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 
 const EXPORT_NAME = "jwt-decode";
-const COMMONJS_INPUT = "lib/index.cjs.js";
-const ES_INPUT = "lib/index.js";
 const isProduction = process.env.NODE_ENV === "production";
 const plugins = [
     resolve({
@@ -21,16 +19,16 @@ const plugins = [
 ];
 
 export default [{
-        input: COMMONJS_INPUT,
+        input: "lib/index.standalone.js",
         output: {
-            name: EXPORT_NAME,
+            name: "jwt_decode",
             file: "build/jwt-decode.js",
             format: "umd",
             sourcemap: true,
         },
     },
     {
-        input: COMMONJS_INPUT,
+        input: "lib/index.cjs.js",
         output: [{
             name: EXPORT_NAME,
             file: "build/jwt-decode.cjs.js",
@@ -40,7 +38,7 @@ export default [{
         plugins,
     },
     {
-        input: ES_INPUT,
+        input: "lib/index.js",
         output: [{
             name: EXPORT_NAME,
             file: "build/jwt-decode.esm.js",
