@@ -24,7 +24,6 @@ export default [{
             name: "jwt_decode",
             file: "build/jwt-decode.js",
             format: "umd",
-            sourcemap: true,
         },
     },
     {

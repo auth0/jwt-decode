@@ -16,4 +16,5 @@ results
 
 npm-debug.log
 node_modules
-build
+build/*
+!build/jwt-decode.js

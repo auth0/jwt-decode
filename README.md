@@ -36,9 +36,17 @@ console.log(decodedHeader);
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
 
-## Older verion
+## Include with a script tag
 
-If you want to use the library trough Bower, an HTML import or include it through a `<script>` tag, use [version `v2.2.0`](https://github.com/auth0/jwt-decode/tree/v2.2.0). It has the same functionality.
+Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere, then include like so:
+
+```html
+<script src="jwt-decode.js"></script>
+```
+
+## Older verions
+
+If you want to use the library trough Bower, an HTML import, use [version `v2.2.0`](https://github.com/auth0/jwt-decode/tree/v2.2.0). It has the same functionality.
 
 ## Develop
 
