@@ -1,43 +1,44 @@
 {
-  "name": "jwt-decode",
-  "version": "2.2.0",
-  "description": "Decode JWT tokens, mostly useful for browser applications.",
-  "main": "lib/index.js",
-  "keywords": [
-    "jwt",
-    "browser"
-  ],
-  "scripts": {
-    "test": "grunt test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/auth0/jwt-decode"
-  },
-  "author": "Jose F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "expect.js": "~0.2.0",
-    "grunt": "~0.4.0",
-    "grunt-browserify": "~5.0.0",
-    "grunt-cli": "~0.1.9",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-watch": "~0.2.0",
-    "grunt-exec": "~0.4.2",
-    "grunt-s3": "~0.2.0-alpha.3",
-    "mocha": "~1.13.0",
-    "rimraf": "~2.2.2",
-    "testem": "~0.5.8",
-    "uglify-js": "^2.8.29"
-  },
-  "files": [
-    "lib/",
-    "build/",
-    "jwt-decode.html",
-    "standalone.js"
-  ]
+    "name": "jwt-decode",
+    "version": "2.2.0",
+    "description": "Decode JWT tokens, mostly useful for browser applications.",
+    "main": "dist/jwt-decode.cjs.js",
+    "module": "dist/jwt-decode.esm.js",
+    "keywords": [
+        "jwt",
+        "browser"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/auth0/jwt-decode"
+    },
+    "url": "https://github.com/auth0/jwt-decode/issues",
+    "homepage": "https://github.com/auth0/jwt-decode#readme",
+    "scripts": {
+        "dev": "rollup -m -c",
+        "build": "rimraf build && rollup -m -c --environment NODE_ENV:production",
+        "test": "mocha"
+    },
+    "author": "Jose F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
+    "contributors": [
+        "Sam Bellen <sam.bellen@auth0.com>"
+    ],
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^15.0.0",
+        "@rollup/plugin-node-resolve": "^9.0.0",
+        "expect.js": "~0.2.0",
+        "mocha": "^8.1.3",
+        "rimraf": "^2.2.8",
+        "rollup": "^2.26.11",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-serve": "^1.0.4",
+        "rollup-plugin-sourcemaps": "^0.6.2",
+        "rollup-plugin-terser": "^7.0.2",
+        "uglify-js": "^2.8.29"
+    },
+    "files": [
+        "build/"
+    ]
 }
