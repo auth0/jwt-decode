@@ -3,6 +3,8 @@ __jwt-decode__ is a small browser library that helps decoding JWTs token which a
 __IMPORTANT:__ This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
 
 ## Installation
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_shield)
+
 
 Install with npm, bower, or downloading from the build directory of this repository.
 
@@ -71,3 +73,6 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 [browserify]: http://browserify.org
 [webpack]: http://webpack.github.io/
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_large)
