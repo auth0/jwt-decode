@@ -1,19 +1,29 @@
-__jwt-decode__ is a small browser library that helps decoding JWTs token which are Base64Url encoded.
+## **jwt-decode** is a small browser library that helps decoding JWTs token which are Base64Url encoded.
 
-__IMPORTANT:__ This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
+**IMPORTANT:** This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
+
+---
+
+**Warning: When upgrading from version `2` to `3`, there's a potentially breaking change**
+
+If you've previously imported the library as `import * as jwt_decode from 'jwt-decode'`, you'll have to change your import to `import jwt_decode from 'jwt-decode';`.
+
+---
 
 ## Installation
 
-Install with npm, bower, or downloading from the build directory of this repository.
+Install with NPM or Yarn.
 
-Use with AMD, browserify or just include with an script tag.
+Run `npm install jwt-decode` or `yarn add jwt-decode` to install the library.
 
 ## Usage
 
-~~~javascript
-var token = 'eyJ0eXAiO.../// jwt token';
+```javascript
+import jwt_decode from "jwt-decode";
 
+var token = "eyJ0eXAiO.../// jwt token";
 var decoded = jwt_decode(token);
+
 console.log(decoded);
 
 /* prints:
@@ -22,40 +32,40 @@ console.log(decoded);
  *   iat: 1393268893  }
  */
 
- // decode header by passing in options (useful for when you need `kid` to verify a JWT):
- var decodedHeader = jwt_decode(token, { header: true });
- console.log(decodedHeader)
+// decode header by passing in options (useful for when you need `kid` to verify a JWT):
+var decodedHeader = jwt_decode(token, { header: true });
+console.log(decodedHeader);
 
- /* prints:
-  * { typ: "JWT",
-  *   alg: "HS256" }
-  */
-
-~~~
+/* prints:
+ * { typ: "JWT",
+ *   alg: "HS256" }
+ */
+```
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
 
-Can also be used with [browserify] or [webpack] by doing `npm install jwt-decode` and requiring:
+## Use as a CommonJS package
 
-~~~javascript
-var jwtDecode = require('jwt-decode');
-~~~
-
-## Polymer Web Component
-
-Can also be installed and used with [Polymer-based wrapper](https://github.com/firmfirm/f-jwt-decode).
+```javascript
+const jwt_decode = require('jwt-decode');
+...
+```
 
 ## Include with a script tag
 
-Copy the file jwt-decode.min.js from the build/ folder to your project somewhere, then include like so:
+Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere, then include like so:
 
-~~~html
-<script src="jwt-decode.min.js"></script>
-~~~
+```html
+<script src="jwt-decode.js"></script>
+```
+
+## Older verions
+
+If you want to use the library trough Bower, an HTML import, use [version `v2.2.0`](https://github.com/auth0/jwt-decode/tree/v2.2.0). It has the same functionality.
 
 ## Develop
 
-Run `grunt dev` and fire a browser at http://localhost:9999/test_harness.html.
+Run `npm run dev`, this will fire up a browser and watch the `/lib` folder.
 
 ## Issue Reporting
 
@@ -68,6 +78,3 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
-
-[browserify]: http://browserify.org
-[webpack]: http://webpack.github.io/
