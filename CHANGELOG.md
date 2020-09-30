@@ -4,7 +4,7 @@
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v2.0.0..v3.0.0)
 
-- Include an ESM for native JavaScript imports
+- Include an ESM build for native JavaScript imports
 
 **Warning: this version has some potentially breaking changes!**
 
