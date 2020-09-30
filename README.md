@@ -1,6 +1,14 @@
-**jwt-decode** is a small browser library that helps decoding JWTs token which are Base64Url encoded.
+## **jwt-decode** is a small browser library that helps decoding JWTs token which are Base64Url encoded.
 
 **IMPORTANT:** This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
+
+---
+
+**Warning: When upgrading from version `2` to `3`, there's a potentially breaking change**
+
+If you've previously imported the library as `import * as jwt_decode from 'jwt-decode'`, you'll have to change your import to `import jwt_decode from 'jwt-decode';`.
+
+---
 
 ## Installation
 
@@ -35,6 +43,13 @@ console.log(decodedHeader);
 ```
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
+
+## Use as a CommonJS package
+
+```javascript
+const jwt_decode = require('jwt-decode');
+...
+```
 
 ## Include with a script tag
 
