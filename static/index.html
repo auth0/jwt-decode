@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auth0 - JWT-Decode</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <h2>decoded:</h2>
+    <pre><code class="js-decoded"></code></pre>
+
+    <script type="module">
+      import jwtDecode from "/jwt-decode.esm.js";
+      var token =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
+      var decoded = jwtDecode(token);
+      document.querySelector(".js-decoded").innerHTML = JSON.stringify(
+        decoded,
+        null,
+        4
+      );
+    </script>
+  </body>
+</html>
