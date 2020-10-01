@@ -6,6 +6,7 @@
 
 **Warning: When upgrading from version `2` to `3`, there's a potentially breaking change**
 
+
 If you've previously imported the library as `import * as jwt_decode from 'jwt-decode'`, you'll have to change your import to `import jwt_decode from 'jwt-decode';`.
 
 ---
@@ -49,7 +50,7 @@ console.log(decodedHeader);
 ## Use as a CommonJS package
 
 ```javascript
-const jwt_decode = require('jwt-decode');
+const jwt_decode = require('jwt-decode').default;
 ...
 ```
 
