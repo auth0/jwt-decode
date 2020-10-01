@@ -1,6 +1,6 @@
 # Change log
 
-## Version [3.0.0](https://github.com/auth0/jwt-decode/tags/v5.0.1)
+## Version [3.0.0](https://github.com/auth0/jwt-decode/releases/tag/v3.0.0)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v2.0.0..v3.0.0)
 
