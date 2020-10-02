@@ -61,7 +61,7 @@ Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere
 <script src="jwt-decode.js"></script>
 ```
 
-## Older verions
+## Older versions
 
 If you want to use the library trough Bower, an HTML import, use [version `v2.2.0`](https://github.com/auth0/jwt-decode/tree/v2.2.0). It has the same functionality.
 
