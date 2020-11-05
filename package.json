@@ -4,6 +4,7 @@
     "description": "Decode JWT tokens, mostly useful for browser applications.",
     "main": "build/jwt-decode.cjs.js",
     "module": "build/jwt-decode.esm.js",
+    "types": "index.d.ts",
     "keywords": [
         "jwt",
         "browser"
