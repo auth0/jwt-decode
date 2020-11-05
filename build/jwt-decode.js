@@ -108,7 +108,7 @@
      * Expose the function on the window object
      */
 
-    //use amd or just throught to window object.
+    //use amd or just through the window object.
     if (window) {
         if (typeof window.define == "function" && window.define.amd) {
             window.define("jwt_decode", function() {
