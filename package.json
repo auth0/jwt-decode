@@ -40,6 +40,7 @@
         "uglify-js": "^2.8.29"
     },
     "files": [
-        "build/"
+        "build/",
+        "index.d.ts"
     ]
 }
