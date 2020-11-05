@@ -4,4 +4,14 @@ export interface JwtDecodeOptions {
   header?: boolean;
 }
 
-export default function jwtDecode(token: string, options?: JwtDecodeOptions): unknown;
+export interface JwtClaims {
+  iss?: string;
+  sub?: string;
+  aud?: string[] | string;
+  exp?: number;
+  nbf?: number;
+  iat?: number;
+  jti?: string;
+}
+
+export default function jwtDecode(token: string, options?: JwtDecodeOptions): JwtClaims;
