@@ -4,7 +4,7 @@
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v3.0.0..v3.1.0)
 
-- Add TypeScript type defenition
+- Add TypeScript type definition
 - Fix CJS default export
 
 ## Version [3.0.0](https://github.com/auth0/jwt-decode/releases/tag/v3.0.0)
