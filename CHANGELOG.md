@@ -1,5 +1,12 @@
 # Change log
 
+## Version [3.1.2](https://github.com/auth0/jwt-decode/releases/tag/v3.1.2)
+
+[Full Changelog](https://github.com/auth0/jwt-decode/compare/v3.1.1..v3.1.2)
+
+- Add a generic as return type so the user can specify what's expected, this will still be `unknown` by default
+- Export `JwtHeader`and `JwtPayload` that can be used with the generic return type as-is or extended.
+
 ## Version [3.1.0](https://github.com/auth0/jwt-decode/releases/tag/v3.1.0)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v3.0.0..v3.1.0)
