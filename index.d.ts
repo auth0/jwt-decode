@@ -14,4 +14,4 @@ export interface JwtClaims {
   jti?: string;
 }
 
-export default function jwtDecode(token: string, options?: JwtDecodeOptions): JwtClaims;
+export default function jwtDecode<ReturnType = unknown>(token: string, options?: JwtDecodeOptions): ReturnType;
