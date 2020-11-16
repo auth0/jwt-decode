@@ -11,8 +11,8 @@ If you've previously imported the library as `import * as jwt_decode from 'jwt-d
 ---
 
 ## Installation
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_shield)
 
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_shield)
 
 Install with NPM or Yarn.
 
@@ -45,6 +45,19 @@ console.log(decodedHeader);
 ```
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
+
+## Use with typescrip
+
+The `jwt_decode` function will return an `unknown` type by default. You can specify what the expected return type should be by passing a type argument to the `jwt_decode` function.
+
+The package also exports types for a `JwtHeader` and `JwtPayload` with some default claims. You can either use them as-is, or extend them to include non standard claims or properties.
+
+```typescript
+import jwtDecode, { JwtPayload } from "jwt-decode";
+
+const token: string = "eyJhsw5c";
+const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
+```
 
 ## Use as a CommonJS package
 
@@ -84,6 +97,4 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [browserify]: http://browserify.org
 [webpack]: http://webpack.github.io/
 
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_large)
-=======
+# [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fjwt-decode?ref=badge_large)
