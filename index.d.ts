@@ -4,7 +4,12 @@ export interface JwtDecodeOptions {
   header?: boolean;
 }
 
-export interface JwtClaims {
+export interface JwtHeader {
+  type?: string;
+  alg?: string;
+}
+
+export interface JwtPayload {
   iss?: string;
   sub?: string;
   aud?: string[] | string;
@@ -14,4 +19,7 @@ export interface JwtClaims {
   jti?: string;
 }
 
-export default function jwtDecode<ReturnType = unknown>(token: string, options?: JwtDecodeOptions): ReturnType;
+export default function jwtDecode<T = unknown>(
+  token: string,
+  options?: JwtDecodeOptions
+): T;
