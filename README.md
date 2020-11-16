@@ -46,7 +46,7 @@ console.log(decodedHeader);
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
 
-## Use with typescrip
+## Use with typescript
 
 The `jwt_decode` function will return an `unknown` type by default. You can specify what the expected return type should be by passing a type argument to the `jwt_decode` function.
 
