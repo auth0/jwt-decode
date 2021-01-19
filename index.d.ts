@@ -5,7 +5,7 @@ export interface JwtDecodeOptions {
 }
 
 export interface JwtHeader {
-  type?: string;
+  typ?: string;
   alg?: string;
 }
 
