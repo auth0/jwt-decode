@@ -20,6 +20,6 @@ export interface JwtPayload {
 }
 
 export default function jwtDecode<T = unknown>(
-  token: string,
+  token: unknown,
   options?: JwtDecodeOptions
 ): T;
