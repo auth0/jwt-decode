@@ -83,12 +83,9 @@
         }
     }
 
-    function InvalidTokenError(message) {
-        this.message = message;
+    class InvalidTokenError extends Error {
+        name = "InvalidTokenError";
     }
-
-    InvalidTokenError.prototype = new Error();
-    InvalidTokenError.prototype.name = "InvalidTokenError";
 
     function jwtDecode(token, options) {
         if (typeof token !== "string") {
