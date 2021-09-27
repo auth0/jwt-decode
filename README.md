@@ -35,9 +35,11 @@ var decoded = jwt_decode(token);
 console.log(decoded);
 
 /* prints:
- * { foo: "bar",
+ * { 
+ *   foo: "bar",
  *   exp: 1393286893,
- *   iat: 1393268893  }
+ *   iat: 1393268893  
+ * }
  */
 
 // decode header by passing in options (useful for when you need `kid` to verify a JWT):
@@ -45,8 +47,10 @@ var decodedHeader = jwt_decode(token, { header: true });
 console.log(decodedHeader);
 
 /* prints:
- * { typ: "JWT",
- *   alg: "HS256" }
+ * { 
+ *   typ: "JWT",
+ *   alg: "HS256" 
+ * }
  */
 ```
 
