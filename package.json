@@ -25,19 +25,18 @@
         "Sam Bellen <sam.bellen@auth0.com>"
     ],
     "license": "MIT",
-    "dependencies": {},
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^15.0.0",
-        "@rollup/plugin-node-resolve": "^9.0.0",
-        "expect.js": "~0.2.0",
-        "mocha": "^8.1.3",
-        "rimraf": "^2.2.8",
-        "rollup": "^2.26.11",
-        "rollup-plugin-livereload": "^2.0.0",
-        "rollup-plugin-serve": "^1.0.4",
-        "rollup-plugin-sourcemaps": "^0.6.2",
+        "@rollup/plugin-commonjs": "^21.0.2",
+        "@rollup/plugin-node-resolve": "^13.1.3",
+        "expect.js": "^0.3.1",
+        "mocha": "^9.2.1",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.70.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-sourcemaps": "^0.6.3",
         "rollup-plugin-terser": "^7.0.2",
-        "uglify-js": "^2.8.29"
+        "uglify-js": "^3.15.2"
     },
     "files": [
         "build/",

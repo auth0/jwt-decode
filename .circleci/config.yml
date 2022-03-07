@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14-browsers
+    environment:
+      LANG: en_US.UTF-8
+    steps:
+      - checkout
+      - run:
+          name: Update NPM version
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Run Tests
+          command: npm run test
+workflows:
+  build-and-test:
+    jobs:
+      - build
