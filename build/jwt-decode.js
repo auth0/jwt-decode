@@ -91,6 +91,7 @@
     }
 
     InvalidTokenError.prototype = new Error();
+    InvalidTokenError.prototype.name = "InvalidTokenError";
 
     function jwtDecode(token, options) {
         if (typeof token !== "string") {
