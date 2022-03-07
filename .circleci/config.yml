@@ -11,6 +11,9 @@ jobs:
           name: Update NPM version
           command: sudo npm install -g npm@latest
       - run:
+          name: Install dependencies
+          command: npm install
+      - run:
           name: Build
           command: npm run build
       - run:
