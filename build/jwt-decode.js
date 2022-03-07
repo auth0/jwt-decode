@@ -1,7 +1,7 @@
 (function (factory) {
     typeof define === 'function' && define.amd ? define(factory) :
     factory();
-}((function () { 'use strict';
+})((function () { 'use strict';
 
     /**
      * The code was extracted from:
@@ -83,9 +83,14 @@
         }
     }
 
-    class InvalidTokenError extends Error {
-        name = "InvalidTokenError";
+    function InvalidTokenError(message) {
+        var _this = Error.apply(this, arguments) || this;
+        _this.name = "InvalidTokenError";
+        _this.message = message;
+        return _this;
     }
+
+    InvalidTokenError.prototype = new Error();
 
     function jwtDecode(token, options) {
         if (typeof token !== "string") {
@@ -116,5 +121,5 @@
         }
     }
 
-})));
+}));
 //# sourceMappingURL=jwt-decode.js.map
