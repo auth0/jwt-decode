@@ -5,6 +5,14 @@
     "main": "build/jwt-decode.cjs.js",
     "module": "build/jwt-decode.esm.js",
     "types": "index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./build/jwt-decode.cjs.js",
+            "import": "./build/jwt-decode.mjs",
+            "default": "./build/jwt-decode.mjs"
+        },
+        "./package.json": "./package.json"
+    },
     "keywords": [
         "jwt",
         "browser"

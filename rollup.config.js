@@ -40,6 +40,15 @@ export default [{
         input: "lib/index.js",
         output: [{
             name: EXPORT_NAME,
+            file: "build/jwt-decode.mjs",
+            format: "esm",
+        }],
+        plugins,
+    },
+    {
+        input: "lib/index.js",
+        output: [{
+            name: EXPORT_NAME,
             file: "build/jwt-decode.esm.js",
             format: "esm",
         }, ],
