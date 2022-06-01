@@ -1,23 +1,4 @@
-declare class InvalidTokenError extends Error {}
-
-declare interface JwtDecodeOptions {
-  header?: boolean;
-}
-
-declare interface JwtHeader {
-  type?: string;
-  alg?: string;
-}
-
-declare interface JwtPayload {
-  iss?: string;
-  sub?: string;
-  aud?: string[] | string;
-  exp?: number;
-  nbf?: number;
-  iat?: number;
-  jti?: string;
-}
+import { InvalidTokenError, JwtDecodeOptions, JwtHeader, JwtPayload } from "./common";
 
 declare namespace jwtDecode {
   export { InvalidTokenError, JwtDecodeOptions, JwtHeader, JwtPayload }
@@ -26,6 +7,6 @@ declare namespace jwtDecode {
 declare function jwtDecode<T = unknown>(
   token: string,
   options?: JwtDecodeOptions
-): T;
+): T
 
 export = jwtDecode;
