@@ -23,7 +23,7 @@ export default [{
         output: {
             name: "jwt_decode",
             file: "build/jwt-decode.js",
-            format: "umd"
+            format: "umd",
         },
     },
     {
