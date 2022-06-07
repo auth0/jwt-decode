@@ -23,7 +23,7 @@ export default [{
         output: {
             name: "jwt_decode",
             file: "build/jwt-decode.js",
-            format: "umd",
+            format: "umd"
         },
     },
     {
@@ -43,15 +43,6 @@ export default [{
             file: "build/jwt-decode.mjs",
             format: "esm",
         }],
-        plugins,
-    },
-    {
-        input: "lib/index.js",
-        output: [{
-            name: EXPORT_NAME,
-            file: "build/jwt-decode.esm.js",
-            format: "esm",
-        }, ],
         plugins: [!isProduction &&
             serve({
                 contentBase: ["build", "static"],

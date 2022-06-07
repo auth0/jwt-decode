@@ -3,7 +3,7 @@
     "version": "3.1.2",
     "description": "Decode JWT tokens, mostly useful for browser applications.",
     "main": "build/jwt-decode.cjs.js",
-    "module": "build/jwt-decode.esm.js",
+    "module": "build/jwt-decode.mjs",
     "types": "index.d.mts",
     "exports": {
         ".": {
