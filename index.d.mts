@@ -1,5 +1,5 @@
-import { JwtDecodeOptions } from "./common";
-export * from "./common";
+import { JwtDecodeOptions } from "./common.js";
+export * from "./common.js";
 
 declare function jwtDecode<T = unknown>(
   token: string,
