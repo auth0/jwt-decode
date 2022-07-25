@@ -68,4 +68,37 @@ describe("jwt-decode", function() {
             expect(e.name).to.be("InvalidTokenError");
         });
     });
+
+    it("should throw InvalidTokenErrors that are helpful #1", function() {
+        var bad_token = "FAKE_TOKEN";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.not.contain("undefined");
+            expect(e.message).to.not.contain("replace");
+        });
+    });
+
+    it("should throw InvalidTokenErrors that are helpful #2", function() {
+        var bad_token = "FAKE.TOKEN";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.not.contain("undefined");
+            expect(e.message).to.not.contain("replace");
+        });
+    });
+
+    it("should throw InvalidTokenErrors that are helpful #3", function() {
+        var bad_token = "FAKE.TOKEN2";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.not.contain("undefined");
+            expect(e.message).to.not.contain("replace");
+        });
+    });
 });
