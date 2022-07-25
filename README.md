@@ -54,7 +54,23 @@ console.log(decodedHeader);
  */
 ```
 
-**Note:** A falsy or malformed token will throw an `InvalidTokenError` error.
+**Note:** A falsy or malformed token will throw an `InvalidTokenError` error; see below for more information on specific errors.
+
+## Errors
+
+This library works with valid JSON web tokens. The basic format of these token is
+```
+[part1].[part2].[part3]
+```
+All parts are supposed to be valid base64 (url) encoded json.
+Depending on the `{ header: <option> }` option it will decode part 1 (only if header: true is specified) or part 2 (default)
+
+Not adhering to the format will result in a `InvalidTokenError` with one of the following messages:
+
+- `Invalid token specified: must be a string` => the token passed was not a string, this library only works on strings. 
+- `Invalid token specified: missing part #` => this probably means you are missing a dot (`.`) in the token 
+- `Invalid token specified: invalid base64 for part #` => the part could not be base64 decoded (the message should contain the error the base64 decoder gave)
+- `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however the decoded value was not valid json (the message should contain the error the json parser gave)
 
 ## Use with typescript
 
