@@ -37,13 +37,6 @@ describe("jwt-decode", function() {
         expect(decoded.name).to.equal("José");
     });
 
-    it("should work with charCodes of length 1", function() {
-        var utf8_token =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSm9zw6kiLCJpYXQiOjE0MjU2NDQ5NjZ9.1CfFtdGUPs6q8kT3OGQSVlhEMdbuX0HfNSqum0023a0";
-        var decoded = jwt_decode(utf8_token);
-        expect(decoded.name).to.equal("José");
-    });
-
     it("should work with double padding", function() {
         var utf8_token =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpvc8OpIiwiaWF0IjoxNTE2MjM5MDIyfQ.7A3F5SUH2gbBSYVon5mas_Y-KCrWojorKQg7UKGVEIA";
