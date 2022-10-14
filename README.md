@@ -11,6 +11,10 @@ A small browser library that helps decoding JWTs token which are Base64Url encod
 
 :books: [Documentation](#documentation) - :rocket: [Getting Started](#getting-started) - :speech_balloon: [Feedback](#feedback)
 
+## Documentation
+
+- [Docs site](https://www.auth0.com/docs) - explore our docs site and learn more about Auth0.
+
 ## Getting started
 
 ### Installation
