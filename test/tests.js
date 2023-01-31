@@ -69,36 +69,73 @@ describe("jwt-decode", function() {
         });
     });
 
-    it("should throw InvalidTokenErrors that are helpful #1", function() {
+    it("should throw InvalidTokenErrors when token is null", function() {
+        var bad_token = null;
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.be("Invalid token specified: must be a string");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when missing part #1", function() {
+        var bad_token = ".FAKE_TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #1 is not valid base64", function() {
+        var bad_token = "TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid base64 for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #1 is not valid JSON", function() {
+        var bad_token = "FAKE.TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when missing part #2", function() {
         var bad_token = "FAKE_TOKEN";
         expect(function() {
             jwt_decode(bad_token);
         }).to.throwException(function(e) {
             expect(e.name).to.be("InvalidTokenError");
-            expect(e.message).to.not.contain("undefined");
-            expect(e.message).to.not.contain("replace");
+            expect(e.message).to.be("Invalid token specified: missing part #2");
         });
     });
 
-    it("should throw InvalidTokenErrors that are helpful #2", function() {
+    it("should throw InvalidTokenErrors when part #2 is not valid base64", function() {
         var bad_token = "FAKE.TOKEN";
         expect(function() {
             jwt_decode(bad_token);
         }).to.throwException(function(e) {
             expect(e.name).to.be("InvalidTokenError");
-            expect(e.message).to.not.contain("undefined");
-            expect(e.message).to.not.contain("replace");
+            expect(e.message).to.contain("Invalid token specified: invalid base64 for part #2");
         });
     });
 
-    it("should throw InvalidTokenErrors that are helpful #3", function() {
+    it("should throw InvalidTokenErrors when part #2 is not valid JSON", function() {
         var bad_token = "FAKE.TOKEN2";
         expect(function() {
             jwt_decode(bad_token);
         }).to.throwException(function(e) {
             expect(e.name).to.be("InvalidTokenError");
-            expect(e.message).to.not.contain("undefined");
-            expect(e.message).to.not.contain("replace");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #2");
         });
     });
 });
