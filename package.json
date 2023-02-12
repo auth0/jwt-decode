@@ -4,17 +4,15 @@
     "description": "Decode JWT tokens, mostly useful for browser applications.",
     "main": "build/jwt-decode.cjs.js",
     "module": "build/jwt-decode.mjs",
-    "types": "index.d.mts",
+    "types": "index.d.ts",
     "exports": {
         ".": {
             "types": {
-                "require": "./index.d.ts",
                 "import": "./index.d.mts",
-                "default": "./index.d.mts"
+                "default": "./index.d.ts"
             },
-            "require": "./build/jwt-decode.cjs.js",
             "import": "./build/jwt-decode.mjs",
-            "default": "./build/jwt-decode.mjs"
+            "default": "./build/jwt-decode.cjs.js"
         },
         "./package.json": "./package.json"
     },
