@@ -37,6 +37,20 @@ describe("jwt-decode", function() {
         expect(decoded.name).to.equal("José");
     });
 
+    it("should work with double padding", function() {
+        var utf8_token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpvc8OpIiwiaWF0IjoxNTE2MjM5MDIyfQ.7A3F5SUH2gbBSYVon5mas_Y-KCrWojorKQg7UKGVEIA";
+        var decoded = jwt_decode(utf8_token);
+        expect(decoded.name).to.equal("José");
+    });
+
+    it("should work with single padding", function() {
+        var utf8_token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpvc8OpZSIsImlhdCI6MTUxNjIzOTAyMn0.tbjJzDAylkKSV0_YGR5xBJBlFK01C82nZPLIcA3JX1g";
+        var decoded = jwt_decode(utf8_token);
+        expect(decoded.name).to.equal("Josée");
+    });
+
     it("should throw InvalidTokenError on nonstring", function() {
         var bad_token = null;
         expect(function() {
@@ -52,6 +66,76 @@ describe("jwt-decode", function() {
             jwt_decode(bad_token);
         }).to.throwException(function(e) {
             expect(e.name).to.be("InvalidTokenError");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when token is null", function() {
+        var bad_token = null;
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.be("Invalid token specified: must be a string");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when missing part #1", function() {
+        var bad_token = ".FAKE_TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #1 is not valid base64", function() {
+        var bad_token = "TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid base64 for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #1 is not valid JSON", function() {
+        var bad_token = "FAKE.TOKEN";
+        expect(function() {
+            jwt_decode(bad_token, {header: true});
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #1");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when missing part #2", function() {
+        var bad_token = "FAKE_TOKEN";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.be("Invalid token specified: missing part #2");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #2 is not valid base64", function() {
+        var bad_token = "FAKE.TOKEN";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid base64 for part #2");
+        });
+    });
+
+    it("should throw InvalidTokenErrors when part #2 is not valid JSON", function() {
+        var bad_token = "FAKE.TOKEN2";
+        expect(function() {
+            jwt_decode(bad_token);
+        }).to.throwException(function(e) {
+            expect(e.name).to.be("InvalidTokenError");
+            expect(e.message).to.contain("Invalid token specified: invalid json for part #2");
         });
     });
 });
