@@ -7,11 +7,6 @@ body:
     attributes:
       value: |
         **Please do not report security vulnerabilities here**. The [Responsible Disclosure Program](https://auth0.com/responsible-disclosure-policy) details the procedure for disclosing security issues.
-  
-  - type: markdown
-    attributes:
-      value: |
-        :warning: **Note:** We are no longer supporting requests for new features. Only requests for bug fixes or security patches will be considered.
 
   - type: checkboxes
     id: checklist
