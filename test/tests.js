@@ -138,4 +138,45 @@ describe("jwt-decode", function() {
             expect(e.message).to.contain("Invalid token specified: invalid json for part #2");
         });
     });
+
+    describe("validation", function() {
+        it("should return header information on bad token when no validation is required", function() {
+            // invalid alg=12345
+            var token = "eyJhbGciOiAxMjM0NSwidHlwIjogIkpXVCJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
+            var decoded = jwt_decode(token, { header: true });
+            expect(decoded.alg).to.equal(12345);
+        });
+
+        it("should throw InvalidTokenError on bad header when validation is required", function() {
+            // invalid alg=12345
+            var token = "eyJhbGciOiAxMjM0NSwidHlwIjogIkpXVCJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
+    
+            expect(function() {
+                jwt_decode(token, { header: true, validate: true });
+            }).to.throwException(function(e) {
+                expect(e.name).to.be("InvalidTokenError");
+            });
+        });
+
+        it("should return payload information on bad token when no validation is required", function() {
+            // invalid iat
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiAiMTIzNDU2Nzg5MCIsIm5hbWUiOiAiSm9obiBEb2UiLCJpYXQiOiJzaG91bGQtYmUtbnVtYmVyIn0.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
+    
+            var decoded = jwt_decode(token);
+            expect(decoded.iat).to.equal("should-be-number");
+        });
+
+        it("should throw InvalidTokenError on bad payload when validation is required", function() {
+            // invalid iat
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiAiMTIzNDU2Nzg5MCIsIm5hbWUiOiAiSm9obiBEb2UiLCJpYXQiOiJzaG91bGQtYmUtbnVtYmVyIn0.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
+    
+            expect(function() {
+                jwt_decode(token, { validate: true });
+            }).to.throwException(function(e) {
+                expect(e.name).to.be("InvalidTokenError");
+            });
+        });
+    });
+
 });
+

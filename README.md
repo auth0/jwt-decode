@@ -49,6 +49,11 @@ console.log(decodedHeader);
  *   alg: "HS256" 
  * }
  */
+
+// optionally, a data validation can be requested
+var decodedAndValidated = jwt_decode(token, { validate: true });
+var decodedHeaderAndValidated = jwt_decode(token, { header: true, validate: true });
+
 ```
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error; see below for more information on specific errors.
@@ -60,7 +65,7 @@ This library works with valid JSON web tokens. The basic format of these token i
 [part1].[part2].[part3]
 ```
 All parts are supposed to be valid base64 (url) encoded json.
-Depending on the `{ header: <option> }` option it will decode part 1 (only if header: true is specified) or part 2 (default)
+Depending on the `{ header: <option> }` option it will decode part 1 (only if header: true is specified) or part 2 (default).
 
 Not adhering to the format will result in a `InvalidTokenError` with one of the following messages:
 
@@ -68,6 +73,7 @@ Not adhering to the format will result in a `InvalidTokenError` with one of the 
 - `Invalid token specified: missing part #` => this probably means you are missing a dot (`.`) in the token 
 - `Invalid token specified: invalid base64 for part #` => the part could not be base64 decoded (the message should contain the error the base64 decoder gave)
 - `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however the decoded value was not valid json (the message should contain the error the json parser gave)
+- `Invalid token specified: failed to validate` => when `{ validate: true }`, the decoded part failed to validate according to the expected format.
 
 #### Use with typescript
 
