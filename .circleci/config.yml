@@ -1,8 +1,12 @@
 version: 2.1
 jobs:
   build:
+    parameters:
+      node-version:
+        type: string
+        default: "18"
     docker:
-      - image: circleci/node:14-browsers
+      - image: cimg/node:<< parameters.node-version >>
     environment:
       LANG: en_US.UTF-8
     steps:
@@ -23,3 +27,6 @@ workflows:
   build-and-test:
     jobs:
       - build
+          matrix:
+            parameters:
+              node-version: ["14.20", "16.20", "18.16"]
