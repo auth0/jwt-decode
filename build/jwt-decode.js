@@ -44,9 +44,13 @@
     return output;
   }
 
-  var atob = (typeof window !== "undefined" &&
-    window.atob &&
-    window.atob.bind(window)) ||
+  const global =
+    (typeof globalThis !== "undefined" && globalThis) ||
+    (typeof window !== "undefined" && window);
+
+  var atob = (typeof global !== "undefined" &&
+    global.atob &&
+    global.atob.bind(global)) ||
     polyfill;
 
   function b64DecodeUnicode(str) {
