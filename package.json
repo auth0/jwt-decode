@@ -41,5 +41,8 @@
     "files": [
         "build/",
         "index.d.ts"
-    ]
+    ],
+    "engines": {
+        "node": ">=16"
+    }
 }
