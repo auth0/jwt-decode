@@ -44,5 +44,12 @@
     ],
     "engines": {
         "node": ">=16"
+    },
+    "exports": {
+        ".": {
+            "require": "./build/jwt-decode.cjs.js",
+            "import": "./build/jwt-decode.esm.js",
+            "types": "./index.d.ts"
+        }
     }
 }
