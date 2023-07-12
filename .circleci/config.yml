@@ -29,4 +29,4 @@ workflows:
       - build:
           matrix:
             parameters:
-              node-version: ["16.20", "18.16"]
+              node-version: ["16.20", "18.16", "20.4"]
