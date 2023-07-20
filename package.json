@@ -20,8 +20,8 @@
         "build": "rimraf dist && rollup -m -c --environment NODE_ENV:production",
         "postbuild": "echo '{\"type\": \"commonjs\"}'> dist/cjs/package.json",
         "test": "npm run test:node && npm run test:browser",
-        "test:node": "jest --coverage",
-        "test:browser": "jest --coverage --testEnvironment=jsdom"
+        "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
+        "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom"
     },
     "author": "Jose F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
     "contributors": [
