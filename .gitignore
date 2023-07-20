@@ -20,3 +20,4 @@ node_modules
 build/*
 !build/jwt-decode.js
 coverage/*
+dist/*
