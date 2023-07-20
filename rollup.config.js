@@ -55,7 +55,7 @@ export default [{
         input: "lib/index.cjs.ts",
         output: [{
             name: EXPORT_NAME,
-            file: "dist/jwt-decode.cjs.js",
+            file: "dist/cjs/jwt-decode.js",
             format: "cjs",
             exports: "auto",
         }, ],
@@ -65,7 +65,7 @@ export default [{
         input: "lib/index.ts",
         output: [{
             name: EXPORT_NAME,
-            file: "dist/jwt-decode.esm.js",
+            file: "dist/esm/jwt-decode.js",
             format: "esm",
         }, ],
         plugins: [!isProduction &&
