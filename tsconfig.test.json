@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "target": "es6",
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "strictBindCallApply": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+  }
+}

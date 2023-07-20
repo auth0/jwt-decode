@@ -1,7 +1,7 @@
 module.exports = {
     rootDir: './',
-    moduleFileExtensions: ['js'],
-    testMatch: ['**/test/**/*.test.js', '**/test/tests.js'],
+    moduleFileExtensions: ['ts', 'js'],
+    testMatch: ['**/test/**/*.test.ts', '**/test/tests.ts'],
     coverageProvider: 'v8',
     coveragePathIgnorePatterns: [
       '/node_modules/',
@@ -13,5 +13,9 @@ module.exports = {
       ['jest-junit', { outputDirectory: 'test-results/jest' }]
     ],
     coverageReporters: ['lcov', 'text', 'text-summary'],
-    setupFiles: []
+    setupFiles: [],
+    preset: 'ts-jest',
+    transform: {
+      '^.+\\.ts?$': ['ts-jest', {tsconfig: './tsconfig.test.json'}]
+    },
   };

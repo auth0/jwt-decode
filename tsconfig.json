@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "ES2017",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "sourceMap": true,
+      "declaration": true,
+      "declarationDir": "./dist/typings",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "downlevelIteration": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "strictBindCallApply": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "strictPropertyInitialization": true,
+    },
+    "exclude": ["./test", "./dist/typings"]
+  }
+  
