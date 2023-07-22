@@ -5,7 +5,7 @@
       "esModuleInterop": true,
       "sourceMap": true,
       "declaration": true,
-      "declarationDir": "./dist/typings",
+      "declarationDir": "./build/typings",
       "moduleResolution": "node",
       "noImplicitAny": true,
       "downlevelIteration": true,
@@ -16,6 +16,6 @@
       "strictFunctionTypes": true,
       "strictPropertyInitialization": true,
     },
-    "exclude": ["./test", "./dist/typings"]
+    "exclude": ["./test", "./build/typings"]
   }
   
