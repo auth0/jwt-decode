@@ -2,9 +2,9 @@
     "name": "jwt-decode",
     "version": "3.1.2",
     "description": "Decode JWT tokens, mostly useful for browser applications.",
-    "main": "dist/cjs/jwt-decode.js",
-    "module": "dist/esm/jwt-decode.js",
-    "types": "dist/typings/index.d.ts",
+    "main": "build/cjs/jwt-decode.js",
+    "module": "build/esm/jwt-decode.js",
+    "types": "build/typings/index.d.ts",
     "keywords": [
         "jwt",
         "browser"
@@ -17,8 +17,8 @@
     "homepage": "https://github.com/auth0/jwt-decode#readme",
     "scripts": {
         "dev": "rollup -m -c",
-        "build": "rimraf dist && rollup -m -c --environment NODE_ENV:production",
-        "postbuild": "echo '{\"type\": \"commonjs\"}'> dist/cjs/package.json",
+        "build": "rimraf build && rollup -m -c --environment NODE_ENV:production",
+        "postbuild": "echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
         "test": "npm run test:node && npm run test:browser",
         "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
         "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom"
@@ -50,7 +50,7 @@
         "uglify-js": "^3.15.2"
     },
     "files": [
-        "dist/",
+        "build/",
         "index.d.ts"
     ],
     "engines": {
@@ -59,9 +59,9 @@
     "type": "module",
     "exports": {
         ".": {
-            "require": "./dist/cjs/jwt-decode.js",
-            "import": "./dist/esm/jwt-decode.js",
-            "types": "./dist/typings/index.d.ts"
+            "require": "./build/cjs/jwt-decode.js",
+            "import": "./build/esm/jwt-decode.js",
+            "types": "./build/typings/index.d.ts"
         }
     }
 }

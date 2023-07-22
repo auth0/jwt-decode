@@ -34,7 +34,7 @@ export default [{
         input: "lib/index.standalone.ts",
         output: {
             name: "jwt_decode",
-            file: "dist/jwt-decode.js",
+            file: "build/jwt-decode.js",
             format: "umd",
         },
         plugins: [
@@ -55,7 +55,7 @@ export default [{
         input: "lib/index.cjs.ts",
         output: [{
             name: EXPORT_NAME,
-            file: "dist/cjs/jwt-decode.js",
+            file: "build/cjs/jwt-decode.js",
             format: "cjs",
             exports: "auto",
         }, ],
@@ -65,12 +65,12 @@ export default [{
         input: "lib/index.ts",
         output: [{
             name: EXPORT_NAME,
-            file: "dist/esm/jwt-decode.js",
+            file: "build/esm/jwt-decode.js",
             format: "esm",
         }, ],
         plugins: [!isProduction &&
             serve({
-                contentBase: ["dist", "static"],
+                contentBase: ["build", "static"],
                 open: true,
                 port: 3000,
             }), !isProduction && livereload(),
