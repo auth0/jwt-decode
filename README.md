@@ -92,7 +92,7 @@ const jwt_decode = require('jwt-decode');
 
 #### Include with a script tag
 
-Copy the file `jwt-decode.js` from the `dist/` folder to your project somewhere, then include it like so:
+Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere, then include it like so:
 
 ```html
 <script src="jwt-decode.js"></script>
