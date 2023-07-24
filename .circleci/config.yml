@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  ship: auth0/ship@0
 jobs:
   build:
     parameters:
@@ -30,3 +32,13 @@ workflows:
           matrix:
             parameters:
               node-version: ["14.20", "16.20", "18.16"]
+      - ship/node-publish:
+          context:
+            - publish-npm
+            - publish-gh
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build
