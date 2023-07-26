@@ -1,5 +1,5 @@
 import jwt_decode, { InvalidTokenError, JwtPayload } from "./../lib/index";
-import { expect } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
 
 var token =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
