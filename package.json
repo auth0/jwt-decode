@@ -21,7 +21,8 @@
         "postbuild": "echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
         "test": "npm run test:node && npm run test:browser",
         "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
-        "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom"
+        "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom",
+        "prepublishOnly": "npm run build && npm run test"
     },
     "author": "Jose F. Romaniello <jfromaniello@gmail.com>",
     "contributors": [
