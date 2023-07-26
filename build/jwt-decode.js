@@ -9,7 +9,7 @@
 
     function b64DecodeUnicode(str) {
         return decodeURIComponent(atob(str).replace(/(.)/g, function (m, p) {
-            var code = p.charCodeAt(0).toString(16).toUpperCase();
+            let code = p.charCodeAt(0).toString(16).toUpperCase();
             if (code.length < 2) {
                 code = "0" + code;
             }
@@ -17,7 +17,7 @@
         }));
     }
     function base64_url_decode (str) {
-        var output = str.replace(/-/g, "+").replace(/_/g, "/");
+        let output = str.replace(/-/g, "+").replace(/_/g, "/");
         switch (output.length % 4) {
             case 0:
                 break;
@@ -49,13 +49,14 @@
             throw new InvalidTokenError("Invalid token specified: must be a string");
         }
         options = options || {};
-        var pos = options.header === true ? 0 : 1;
-        var part = token.split(".")[pos];
+        const pos = options.header === true ? 0 : 1;
+        const part = token.split(".")[pos];
         if (typeof part !== "string") {
             throw new InvalidTokenError("Invalid token specified: missing part #" + (pos + 1));
         }
+        let decoded;
         try {
-            var decoded = base64_url_decode(part);
+            decoded = base64_url_decode(part);
         }
         catch (e) {
             throw new InvalidTokenError("Invalid token specified: invalid base64 for part #" +
