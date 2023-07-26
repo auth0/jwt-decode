@@ -1,5 +1,4 @@
-import { terser } from "rollup-plugin-terser";
-import sourcemaps from "rollup-plugin-sourcemaps";
+import terser from "@rollup/plugin-terser";
 import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import typescript from "rollup-plugin-typescript2";
@@ -19,7 +18,6 @@ const plugins = [
         }
     }),
     isProduction && terser(),
-    sourcemaps(),
 ];
 
 export default [{
