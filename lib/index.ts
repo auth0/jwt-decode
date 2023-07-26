@@ -26,17 +26,18 @@ function jwtDecode(
   }
 
   options = options || {};
-  var pos = options.header === true ? 0 : 1;
+  const pos = options.header === true ? 0 : 1;
 
-  var part = token.split(".")[pos];
+  const part = token.split(".")[pos];
   if (typeof part !== "string") {
     throw new InvalidTokenError(
       "Invalid token specified: missing part #" + (pos + 1)
     );
   }
 
+  let decoded: string;
   try {
-    var decoded = base64_url_decode(part);
+    decoded = base64_url_decode(part);
   } catch (e: any) {
     throw new InvalidTokenError(
       "Invalid token specified: invalid base64 for part #" +
