@@ -37,7 +37,7 @@ function jwtDecode(
 
   try {
     var decoded = base64_url_decode(part);
-  } catch (e) {
+  } catch (e: any) {
     throw new InvalidTokenError(
       "Invalid token specified: invalid base64 for part #" +
         (pos + 1) +
@@ -49,7 +49,7 @@ function jwtDecode(
 
   try {
     return JSON.parse(decoded);
-  } catch (e) {
+  } catch (e: any) {
     throw new InvalidTokenError(
       "Invalid token specified: invalid json for part #" +
         (pos + 1) +
