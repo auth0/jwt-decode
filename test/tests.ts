@@ -5,7 +5,7 @@ var token =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
 
 describe("jwt-decode", function () {
-  it("should fail to construct without a clientID", function () {
+  it("should return default and custom claims", function () {
     var decoded = jwt_decode<JwtPayload & { foo: string }>(token);
     expect(decoded.exp).toEqual(1393286893);
     expect(decoded.iat).toEqual(1393268893);
