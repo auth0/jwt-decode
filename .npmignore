@@ -1,9 +1,0 @@
-.github
-node_modules
-lib
-test
-static
-.gitignore
-.npmignore
-rollup.config.js
-.vscode
