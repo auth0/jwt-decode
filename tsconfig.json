@@ -10,11 +10,7 @@
       "noImplicitAny": true,
       "downlevelIteration": true,
       "noImplicitThis": true,
-      "alwaysStrict": true,
-      "strictBindCallApply": true,
-      "strictNullChecks": true,
-      "strictFunctionTypes": true,
-      "strictPropertyInitialization": true,
+      "strict": true,
     },
     "exclude": ["./test", "./build/typings"]
   }
