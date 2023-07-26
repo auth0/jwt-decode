@@ -1,5 +1,3 @@
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import sourcemaps from "rollup-plugin-sourcemaps";
 import serve from "rollup-plugin-serve";
@@ -9,12 +7,6 @@ import typescript from "rollup-plugin-typescript2";
 const EXPORT_NAME = "jwt-decode";
 const isProduction = process.env.NODE_ENV === "production";
 const plugins = [
-    resolve({
-        browser: true,
-    }),
-    commonjs({
-        requireReturnsDefault: "preferred",
-    }),
     typescript({
         clean: true,
         useTsconfigDeclarationDir: true,
