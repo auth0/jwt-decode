@@ -23,7 +23,7 @@
         "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
         "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom"
     },
-    "author": "Jose F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
+    "author": "Jose F. Romaniello <jfromaniello@gmail.com>",
     "contributors": [
         "Sam Bellen <sam.bellen@auth0.com>"
     ],
