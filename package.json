@@ -50,8 +50,7 @@
         "uglify-js": "^3.15.2"
     },
     "files": [
-        "build/",
-        "index.d.ts"
+        "build"
     ],
     "engines": {
         "node": ">=16"
