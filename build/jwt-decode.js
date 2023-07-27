@@ -4,9 +4,6 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.jwt_decode = factory());
 })(this, (function () { 'use strict';
 
-    const global = (typeof globalThis !== "undefined" && globalThis) || window;
-    var atob = global.atob.bind(global);
-
     function b64DecodeUnicode(str) {
         return decodeURIComponent(atob(str).replace(/(.)/g, function (m, p) {
             let code = p.charCodeAt(0).toString(16).toUpperCase();
