@@ -1,5 +1,3 @@
-import atob from "./atob";
-
 function b64DecodeUnicode(str: string) {
     return decodeURIComponent(
         atob(str).replace(/(.)/g, function(m, p) {
