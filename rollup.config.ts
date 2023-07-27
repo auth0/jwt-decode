@@ -27,6 +27,7 @@ export default defineConfig([{
             name: "jwt_decode",
             file: "build/jwt-decode.js",
             format: "umd",
+            sourcemap: true,
         },
         plugins: [
             typescript({
@@ -49,6 +50,7 @@ export default defineConfig([{
             file: "build/cjs/jwt-decode.js",
             format: "cjs",
             exports: "auto",
+            sourcemap: true,
         }, ],
         plugins,
     },
@@ -58,6 +60,7 @@ export default defineConfig([{
             name: EXPORT_NAME,
             file: "build/esm/jwt-decode.js",
             format: "esm",
+            sourcemap: true,
         }, ],
         plugins: [!isProduction &&
             serve({
