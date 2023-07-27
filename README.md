@@ -80,7 +80,7 @@ You can extend both `JwtHeader` and `JwtPayload` to include non-standard claims 
 import jwtDecode from "jwt-decode";
 
 const token: string = "eyJhsw5c";
-const decoded = jwtDecode(token); // Returns with the JwtPayload type
+const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
 ```
 
 #### Use as a CommonJS package
