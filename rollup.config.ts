@@ -1,6 +1,7 @@
 import terser from "@rollup/plugin-terser";
-import serve from "rollup-plugin-serve";
+import { defineConfig } from "rollup";
 import livereload from "rollup-plugin-livereload";
+import serve from "rollup-plugin-serve";
 import typescript from "rollup-plugin-typescript2";
 
 const EXPORT_NAME = "jwt-decode";
@@ -20,7 +21,7 @@ const plugins = [
     isProduction && terser(),
 ];
 
-export default [{
+export default defineConfig([{
         input: "lib/index.standalone.ts",
         output: {
             name: "jwt_decode",
@@ -70,4 +71,4 @@ export default [{
             clearScreen: false,
         },
     },
-];
+]);
