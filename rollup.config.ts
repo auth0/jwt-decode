@@ -1,23 +1,18 @@
 import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 import { defineConfig } from "rollup";
 import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
-import typescript from "rollup-plugin-typescript2";
 
 const EXPORT_NAME = "jwt-decode";
 const isProduction = process.env.NODE_ENV === "production";
+const tsPlugin = typescript({
+    rootDir: "lib",
+    sourceMap: true,
+});
+
 const plugins = [
-    typescript({
-        clean: true,
-        useTsconfigDeclarationDir: true,
-        tsconfigOverride: {
-            noEmit: false,
-            sourceMap: true,
-            compilerOptions: {
-                lib: ['dom', 'es6']
-            }
-        }
-    }),
+    tsPlugin,
     isProduction && terser(),
 ];
 
@@ -30,17 +25,7 @@ export default defineConfig([{
             sourcemap: true,
         },
         plugins: [
-            typescript({
-                clean: true,
-                useTsconfigDeclarationDir: true,
-                tsconfigOverride: {
-                    noEmit: false,
-                    sourceMap: true,
-                    compilerOptions: {
-                        lib: ['dom', 'es6']
-                    }
-                }
-            }),
+            tsPlugin,
         ]
     },
     {
