@@ -16,8 +16,8 @@
     "url": "https://github.com/auth0/jwt-decode/issues",
     "homepage": "https://github.com/auth0/jwt-decode#readme",
     "scripts": {
-        "dev": "rollup -m -c",
-        "build": "rimraf build && rollup -m -c --environment NODE_ENV:production",
+        "dev": "rollup --sourcemap --config --configPlugin typescript",
+        "build": "rimraf build && rollup --sourcemap --config --configPlugin typescript --environment NODE_ENV:production",
         "postbuild": "echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
         "test": "npm run test:node && npm run test:browser",
         "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
@@ -30,6 +30,7 @@
     "license": "MIT",
     "devDependencies": {
         "@rollup/plugin-terser": "^0.4.3",
+        "@rollup/plugin-typescript": "^11.1.2",
         "jest": "^29.6.1",
         "jest-environment-jsdom": "^29.6.1",
         "jest-junit": "^16.0.0",
