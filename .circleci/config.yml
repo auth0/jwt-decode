@@ -36,6 +36,7 @@ workflows:
             parameters:
               node-version: ["16.20", "18.16", "20.4"]
       - ship/node-publish:
+          publish-command: npm publish --tag beta
           context:
             - publish-npm
             - publish-gh
