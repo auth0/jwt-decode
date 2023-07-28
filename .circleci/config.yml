@@ -43,5 +43,6 @@ workflows:
             branches:
               only:
                 - master
+                - beta
           requires:
             - build
