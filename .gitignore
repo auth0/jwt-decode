@@ -18,5 +18,4 @@ test-results
 npm-debug.log
 node_modules
 build/*
-!build/jwt-decode.js
 coverage/*
