@@ -1,4 +1,4 @@
-import { base64UrlDecode } from "./base64_url_decode";
+import { base64UrlDecode } from "./base64_url_decode.js";
 
 export interface JwtDecodeOptions {
   header?: boolean;

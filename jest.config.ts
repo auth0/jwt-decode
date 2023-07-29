@@ -11,6 +11,9 @@ const jestConfig: JestConfigWithTsJest = {
     "default",
     ["jest-junit", { outputDirectory: "test-results/jest" }],
   ],
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
   coverageReporters: ["lcov", "text", "text-summary"],
   setupFiles: [],
   preset: "ts-jest/presets/default-esm",
