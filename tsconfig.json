@@ -1,18 +1,17 @@
 {
-    "compilerOptions": {
-      "target": "ES2017",
-      "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true,
-      "sourceMap": false,
-      "declaration": true,
-      "declarationDir": "./build/typings",
-      "moduleResolution": "node",
-      "noImplicitAny": true,
-      "downlevelIteration": true,
-      "noImplicitThis": true,
-      "strict": true,
-      "noEmitOnError": true
-    },
-    "exclude": ["./test", "./build/typings"]
-  }
-  
+  "compilerOptions": {
+    "target": "ES2017",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": false,
+    "declaration": true,
+    "declarationDir": "./build/typings",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "downlevelIteration": true,
+    "noImplicitThis": true,
+    "strict": true,
+    "noEmitOnError": true
+  },
+  "exclude": ["./test", "./build/typings"]
+}
