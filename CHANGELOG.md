@@ -1,5 +1,12 @@
 # Change log
 
+## Version [4.0.0-beta.1](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.1)
+
+[Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.0..v4.0.0-beta.1)
+
+**Fixed**
+- Ensure build is run on prepack [\#167](https://github.com/auth0/jwt-decode/pull/167) ([frederikprijck](https://github.com/frederikprijck))
+
 ## Version [4.0.0-beta.0](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.0)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v3.1.2..v4.0.0-beta.0)
