@@ -8,6 +8,6 @@
     "strictBindCallApply": false,
     "strictNullChecks": false,
     "strictFunctionTypes": false,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   }
 }
