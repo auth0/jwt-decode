@@ -1,6 +1,6 @@
 {
     "name": "jwt-decode",
-    "version": "4.0.0-beta.0",
+    "version": "4.0.0-beta.1",
     "description": "Decode JWT tokens, mostly useful for browser applications.",
     "main": "build/cjs/jwt-decode.js",
     "module": "build/esm/jwt-decode.js",
