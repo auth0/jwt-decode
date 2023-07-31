@@ -17,7 +17,7 @@ const plugins = [
 ];
 
 export default defineConfig([{
-    input: "lib/index.standalone.ts",
+    input: "lib/index.ts",
     output: {
       name: "jwt_decode",
       file: "build/jwt-decode.js",
@@ -29,7 +29,7 @@ export default defineConfig([{
     ]
   },
   {
-    input: "lib/index.cjs.ts",
+    input: "lib/index.ts",
     output: [{
       name: EXPORT_NAME,
       file: "build/cjs/jwt-decode.js",

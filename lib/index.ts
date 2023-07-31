@@ -1,6 +1,6 @@
 "use strict";
 
-import base64_url_decode from "./base64_url_decode";
+import { base64UrlDecode } from "./base64_url_decode";
 import { JwtDecodeOptions, JwtHeader, JwtPayload } from "./global";
 export * from './global';
 
@@ -12,12 +12,12 @@ export class InvalidTokenError extends Error {
 
 InvalidTokenError.prototype.name = "InvalidTokenError";
 
-function jwtDecode<T = JwtHeader>(
+export function jwtDecode<T = JwtHeader>(
   token: string,
   options: JwtDecodeOptions & { header: true }
 ): T;
-function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-function jwtDecode(
+export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
+export function jwtDecode(
   token: string,
   options: JwtDecodeOptions = { header: false }
 ) {
@@ -61,4 +61,3 @@ function jwtDecode(
   }
 }
 
-export default jwtDecode;
