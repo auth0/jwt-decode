@@ -1,8 +1,8 @@
 "use strict";
 
 import base64_url_decode from "./base64_url_decode";
-import { JwtDecodeOptions, JwtHeader, JwtPayload } from "./global";
-export * from './global';
+import type { JwtDecodeOptions, JwtHeader, JwtPayload } from "./global";
+export type { JwtDecodeOptions, JwtHeader, JwtPayload };
 
 export class InvalidTokenError extends Error {
   constructor(message: string) {
