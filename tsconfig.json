@@ -4,8 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "sourceMap": false,
-    "declaration": true,
-    "declarationDir": "./build/typings",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "downlevelIteration": true,
