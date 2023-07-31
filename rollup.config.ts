@@ -18,7 +18,7 @@ const plugins = [
 const input = "lib/index.ts";
 
 export default defineConfig([{
-    input,
+    input: "lib/index.umd.ts",
     output: {
       name: "jwt_decode",
       file: "build/jwt-decode.js",
