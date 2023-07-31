@@ -12,19 +12,19 @@ export class InvalidTokenError extends Error {
 
 InvalidTokenError.prototype.name = "InvalidTokenError";
 
+
+const defaultDecodeOptions = 
 function jwtDecode<T = JwtHeader>(
   token: string,
   options: JwtDecodeOptions & { header: true }
 ): T;
 function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-function jwtDecode(
-  token: string,
-  options: JwtDecodeOptions = { header: false }
-) {
+function jwtDecode(token: string, options?: JwtDecodeOptions) {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
 
+  // default empty options object when the provided options is either null | undefined
   options = options || {};
   const pos = options.header === true ? 0 : 1;
 
