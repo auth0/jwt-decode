@@ -97,7 +97,12 @@ Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere
 ```html
 <script src="jwt-decode.js"></script>
 ```
+The jwtDecode function is exposed as a property on the global `jwt_decode` property:
 
+```javascript
+const token = "eyJhsw5c";
+const decoded = jwt_decode.jwtDecode(token); 
+```
 
 ## Feedback
 
