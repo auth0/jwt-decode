@@ -24,10 +24,10 @@ Run `npm install jwt-decode` or `yarn add jwt-decode` to install the library.
 ### Usage
 
 ```js
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
-var token = "eyJ0eXAiO.../// jwt token";
-var decoded = jwt_decode(token);
+const token = "eyJ0eXAiO.../// jwt token";
+const decoded = jwtDecode(token);
 
 console.log(decoded);
 
@@ -40,7 +40,7 @@ console.log(decoded);
  */
 
 // decode header by passing in options (useful for when you need `kid` to verify a JWT):
-var decodedHeader = jwt_decode(token, { header: true });
+const decodedHeader = jwtDecode(token, { header: true });
 console.log(decodedHeader);
 
 /* prints:
@@ -69,24 +69,24 @@ Not adhering to the format will result in a `InvalidTokenError` with one of the 
 - `Invalid token specified: invalid base64 for part #` => the part could not be base64 decoded (the message should contain the error the base64 decoder gave)
 - `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however, the decoded value was not valid JSON (the message should contain the error the JSON parser gave)
 
-#### Use with typescript
+#### Use with TypeScript
 
-The return type of the `jwt_decode` function is determined by the `header` property of the object passed as the second argument. If omitted (or set to false), it'll use `JwtPayload`, when true it will use `JwtHeader`. 
-If needed, you can specify what the expected return type should be by passing a type argument to the `jwt_decode` function.
+The return type of the `jwtDecode` function is determined by the `header` property of the object passed as the second argument. If omitted (or set to false), it'll use `JwtPayload`, when true it will use `JwtHeader`. 
+If needed, you can specify what the expected return type should be by passing a type argument to the `jwtDecode` function.
 
 You can extend both `JwtHeader` and `JwtPayload` to include non-standard claims or properties.
 
 ```typescript
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
-const token: string = "eyJhsw5c";
+const token = "eyJhsw5c";
 const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
 ```
 
 #### Use as a CommonJS package
 
 ```javascript
-const jwt_decode = require('jwt-decode');
+const { jwtDecode } = require('jwt-decode');
 ...
 ```
 
