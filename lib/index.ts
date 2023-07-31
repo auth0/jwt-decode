@@ -12,8 +12,6 @@ export class InvalidTokenError extends Error {
 
 InvalidTokenError.prototype.name = "InvalidTokenError";
 
-
-const defaultDecodeOptions = 
 function jwtDecode<T = JwtHeader>(
   token: string,
   options: JwtDecodeOptions & { header: true }
