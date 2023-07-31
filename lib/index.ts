@@ -25,7 +25,6 @@ function jwtDecode(
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
 
-  options = options || {};
   const pos = options.header === true ? 0 : 1;
 
   const part = token.split(".")[pos];
