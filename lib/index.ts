@@ -1,5 +1,3 @@
-"use strict";
-
 import base64_url_decode from "./base64_url_decode";
 import { JwtDecodeOptions, JwtHeader, JwtPayload } from "./global";
 export * from './global';
