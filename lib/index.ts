@@ -15,10 +15,7 @@ function jwtDecode<T = JwtHeader>(
   options: JwtDecodeOptions & { header: true }
 ): T;
 function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-function jwtDecode(
-  token: string,
-  options: JwtDecodeOptions = { header: false }
-) {
+function jwtDecode(token: string, options?: JwtDecodeOptions) {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
