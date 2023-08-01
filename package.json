@@ -29,8 +29,8 @@
   "url": "https://github.com/auth0/jwt-decode/issues",
   "homepage": "https://github.com/auth0/jwt-decode#readme",
   "scripts": {
-    "dev": "rollup --sourcemap --config --configPlugin typescript",
-    "build": "rimraf build && rollup --sourcemap --config --configPlugin typescript --environment NODE_ENV:production && npm run generate-types",
+    "dev": "rollup --config --configPlugin typescript",
+    "build": "rimraf build && rollup --config --configPlugin typescript --environment NODE_ENV:production && npm run generate-types",
     "generate-types": "npm run generate-types:es && npm run generate-types:cjs",
     "generate-types:es": "tsup --entry.jwt-decode lib/index.ts --out-dir build/esm --dts-only --format esm",
     "generate-types:cjs": "tsup --entry.jwt-decode lib/index.ts --out-dir build/cjs --dts-only --format cjs",
@@ -45,7 +45,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.2",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",

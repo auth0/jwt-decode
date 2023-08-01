@@ -3,7 +3,6 @@
     "target": "ES2017",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "sourceMap": false,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "downlevelIteration": true,
