@@ -1,4 +1,4 @@
-import base64_url_decode from "./base64_url_decode";
+import { base64UrlDecode } from "./base64_url_decode";
 
 export interface JwtDecodeOptions {
   header?: boolean;
@@ -28,12 +28,12 @@ export class InvalidTokenError extends Error {
 
 InvalidTokenError.prototype.name = "InvalidTokenError";
 
-function jwtDecode<T = JwtHeader>(
+export function jwtDecode<T = JwtHeader>(
   token: string,
   options: JwtDecodeOptions & { header: true }
 ): T;
-function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-function jwtDecode(token: string, options?: JwtDecodeOptions) {
+export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
+export function jwtDecode(token: string, options?: JwtDecodeOptions) {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
@@ -50,7 +50,7 @@ function jwtDecode(token: string, options?: JwtDecodeOptions) {
 
   let decoded: string;
   try {
-    decoded = base64_url_decode(part);
+    decoded = base64UrlDecode(part);
   } catch (e: any) {
     throw new InvalidTokenError(
       "Invalid token specified: invalid base64 for part #" +
@@ -74,4 +74,3 @@ function jwtDecode(token: string, options?: JwtDecodeOptions) {
   }
 }
 
-export default jwtDecode;
