@@ -5,13 +5,13 @@ import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
 
 const isProduction = process.env.NODE_ENV === "production";
-const tsPlugin = typescript({
+const typescriptDefaultOptions = {
   rootDir: "lib",
   sourceMap: true,
-});
+};
 
 const plugins = [
-  tsPlugin,
+  typescript(typescriptDefaultOptions),
   isProduction && terser(),
 ];
 
@@ -26,7 +26,14 @@ export default defineConfig([{
       sourcemap: true,
     },
     plugins: [
-      tsPlugin,
+      typescript(
+        {
+          ...typescriptDefaultOptions,
+          // generate declarations
+          declaration: true,
+          declarationDir: "./build/typings"
+        }
+      ),
     ]
   },
   {
