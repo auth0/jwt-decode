@@ -1,8 +1,24 @@
-"use strict";
-
 import { base64UrlDecode } from "./base64_url_decode";
-import { JwtDecodeOptions, JwtHeader, JwtPayload } from "./global";
-export * from './global';
+
+export interface JwtDecodeOptions {
+  header?: boolean;
+}
+
+export interface JwtHeader {
+  typ?: string;
+  alg?: string;
+  kid?: string;
+}
+
+export interface JwtPayload {
+  iss?: string;
+  sub?: string;
+  aud?: string[] | string;
+  exp?: number;
+  nbf?: number;
+  iat?: number;
+  jti?: string;
+}
 
 export class InvalidTokenError extends Error {
   constructor(message: string) {
@@ -17,10 +33,7 @@ export function jwtDecode<T = JwtHeader>(
   options: JwtDecodeOptions & { header: true }
 ): T;
 export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-export function jwtDecode(
-  token: string,
-  options: JwtDecodeOptions = { header: false }
-) {
+export function jwtDecode(token: string, options?: JwtDecodeOptions) {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
