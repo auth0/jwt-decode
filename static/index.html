@@ -13,7 +13,7 @@
     <pre><code class="js-error3"></code></pre>
 
     <script type="module">
-      import jwtDecode from "/jwt-decode.esm.js";
+      import { jwtDecode } from "/esm/jwt-decode.js";
       var token =
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
       var decoded = jwtDecode(token);

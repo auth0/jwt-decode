@@ -10,7 +10,7 @@ function b64DecodeUnicode(str: string) {
   );
 }
 
-export default function(str: string) {
+export function base64UrlDecode(str: string) {
   let output = str.replace(/-/g, "+").replace(/_/g, "/");
   switch (output.length % 4) {
     case 0:
