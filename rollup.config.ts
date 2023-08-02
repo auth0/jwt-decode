@@ -32,7 +32,7 @@ export default defineConfig([{
   {
     input,
     output: {
-      file: "build/cjs/jwt-decode.js",
+      file: "build/cjs/jwt-decode.cjs",
       format: "cjs",
       sourcemap: true,
     },
