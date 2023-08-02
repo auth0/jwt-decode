@@ -2,9 +2,22 @@
   "name": "jwt-decode",
   "version": "4.0.0-beta.1",
   "description": "Decode JWT tokens, mostly useful for browser applications.",
-  "main": "build/cjs/jwt-decode.js",
+  "type": "module",
+  "main": "build/cjs/jwt-decode.cjs",
   "module": "build/esm/jwt-decode.js",
-  "types": "build/typings/index.d.ts",
+  "types": "build/cjs/jwt-decode.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./build/esm/jwt-decode.js",
+        "types": "./build/esm/jwt-decode.d.ts"
+      },
+      "require": {
+        "default": "./build/cjs/jwt-decode.cjs",
+        "types": "./build/cjs/jwt-decode.d.cts"
+      }
+    }
+  },
   "keywords": [
     "jwt",
     "browser"
@@ -17,8 +30,10 @@
   "homepage": "https://github.com/auth0/jwt-decode#readme",
   "scripts": {
     "dev": "rollup --sourcemap --config --configPlugin typescript",
-    "build": "rimraf build && rollup --sourcemap --config --configPlugin typescript --environment NODE_ENV:production",
-    "postbuild": "echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
+    "build": "rimraf build && rollup --sourcemap --config --configPlugin typescript --environment NODE_ENV:production && npm run generate-types",
+    "generate-types": "npm run generate-types:es && npm run generate-types:cjs",
+    "generate-types:es": "tsup --entry.jwt-decode lib/index.ts --out-dir build/esm --dts-only --format esm",
+    "generate-types:cjs": "tsup --entry.jwt-decode lib/index.ts --out-dir build/cjs --dts-only --format cjs",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom",
@@ -41,6 +56,7 @@
     "rollup-plugin-serve": "^2.0.2",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "tsup": "^7.1.0",
     "typescript": "^5.1.6"
   },
   "files": [
@@ -48,13 +64,5 @@
   ],
   "engines": {
     "node": ">=16"
-  },
-  "type": "module",
-  "exports": {
-    ".": {
-      "require": "./build/cjs/jwt-decode.js",
-      "import": "./build/esm/jwt-decode.js",
-      "types": "./build/typings/index.d.ts"
-    }
   }
 }
