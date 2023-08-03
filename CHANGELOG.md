@@ -6,6 +6,7 @@
 
 **Changed**
 - Avoid using default exports [\#175](https://github.com/auth0/jwt-decode/pull/175) ([frederikprijck](https://github.com/frederikprijck))
+- Make options optional no default function parameter initializer [\#179](https://github.com/auth0/jwt-decode/pull/179) ([cristobal](https://github.com/cristobal))
 
 **Fixed**
 - Ensure types are bundled and correctly linked [\#174](https://github.com/auth0/jwt-decode/pull/174) ([jonkoops](https://github.com/jonkoops))
