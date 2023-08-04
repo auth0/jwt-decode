@@ -1,5 +1,16 @@
 # Change log
 
+## Version [4.0.0-beta.2](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.2)
+
+[Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.1..v4.0.0-beta.2)
+
+**Changed**
+- Avoid using default exports [\#175](https://github.com/auth0/jwt-decode/pull/175) ([frederikprijck](https://github.com/frederikprijck))
+- Make options optional no default function parameter initializer [\#179](https://github.com/auth0/jwt-decode/pull/179) ([cristobal](https://github.com/cristobal))
+
+**Fixed**
+- Ensure types are bundled and correctly linked [\#174](https://github.com/auth0/jwt-decode/pull/174) ([jonkoops](https://github.com/jonkoops))
+
 ## Version [4.0.0-beta.1](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.1)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.0..v4.0.0-beta.1)
