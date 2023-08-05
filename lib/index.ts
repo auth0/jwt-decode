@@ -1,4 +1,4 @@
-import { base64UrlDecode } from "./base64_url_decode";
+import { base64UrlDecode } from "./base64-url-decode";
 
 export interface JwtDecodeOptions {
   header?: boolean;
@@ -20,11 +20,7 @@ export interface JwtPayload {
   jti?: string;
 }
 
-export class InvalidTokenError extends Error {
-  constructor(message: string) {
-    super(message);
-  }
-}
+export class InvalidTokenError extends Error {}
 
 InvalidTokenError.prototype.name = "InvalidTokenError";
 
@@ -38,13 +34,14 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
 
-  options = options || {};
-  const pos = options.header === true ? 0 : 1;
+  options ||= {};
 
+  const pos = options.header === true ? 0 : 1;
   const part = token.split(".")[pos];
+
   if (typeof part !== "string") {
     throw new InvalidTokenError(
-      "Invalid token specified: missing part #" + (pos + 1)
+      `Invalid token specified: missing part #${(pos + 1)}`
     );
   }
 
@@ -53,11 +50,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
     decoded = base64UrlDecode(part);
   } catch (e: any) {
     throw new InvalidTokenError(
-      "Invalid token specified: invalid base64 for part #" +
-        (pos + 1) +
-        " (" +
-        e.message +
-        ")"
+      `Invalid token specified: invalid base64 for part #${(pos + 1)} (${e.message})`
     );
   }
 
@@ -65,11 +58,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
     return JSON.parse(decoded);
   } catch (e: any) {
     throw new InvalidTokenError(
-      "Invalid token specified: invalid json for part #" +
-        (pos + 1) +
-        " (" +
-        e.message +
-        ")"
+      `Invalid token specified: invalid json for part #${(pos + 1)} (${e.message})`
     );
   }
 }

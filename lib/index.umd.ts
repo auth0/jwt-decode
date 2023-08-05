@@ -1,1 +1,1 @@
-export { jwtDecode as default } from './index';
+export { jwtDecode as default } from "./index";
