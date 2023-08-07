@@ -5,10 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
 
 const isProduction = process.env.NODE_ENV === "production";
-const tsPlugin = typescript({
-  rootDir: "lib",
-  sourceMap: true,
-});
+const tsPlugin = typescript({ tsconfig: "tsconfig.build.json" });
 
 const plugins = [
   tsPlugin,
