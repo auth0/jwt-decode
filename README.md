@@ -92,13 +92,12 @@ const { jwtDecode } = require('jwt-decode');
 
 #### Include with a script tag
 
-Copy the file `jwt-decode.js` from the root of the `build/esm` folder to your project somewhere, then include it using `type="module"` on the corresponding script tag.
-Once this script has loaded, the exported `jwtDecode` function will be available:
+Copy the file `jwt-decode.js` from the root of the `build/esm` folder to your project somewhere, then import `jwtDecode` from it inside a script tag that's marked with `type="module"`:
 
 ```html
 <script type="module">
   import { jwtDecode } from "/path/to/jwt-decode.js";
-  
+
   const token = "eyJhsw5c";
   const decoded = jwtDecode(token);
 </script>
