@@ -4,6 +4,9 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./lib"
   }
 }
