@@ -92,26 +92,15 @@ const { jwtDecode } = require('jwt-decode');
 
 #### Include with a script tag
 
-Copy the file `jwt-decode.js` from the root of the `build/` folder to your project somewhere, then include it like so:
+Copy the file `jwt-decode.js` from the root of the `build/esm` folder to your project somewhere, then import `jwtDecode` from it inside a script tag that's marked with `type="module"`:
 
 ```html
-<script src="jwt-decode.js"></script>
-```
+<script type="module">
+  import { jwtDecode } from "/path/to/jwt-decode.js";
 
-Once this script has loaded, the `jwt_decode` function will be exposed as a global:
-
-```javascript
-const token = "eyJhsw5c";
-const decoded = jwt_decode(token);
-```
-
-Alternatively, if you are using the [Asynchronous Module Definition (AMD) API](https://github.com/amdjs/amdjs-api/blob/master/AMD.md), you can load the same function as follows:
-
-```javascript
-define(["jwt_decode"], (jwtDecode) => {
   const token = "eyJhsw5c";
   const decoded = jwtDecode(token);
-});
+</script>
 ```
 
 ## Feedback
