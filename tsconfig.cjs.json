@@ -2,8 +2,6 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "outDir": "./build/cjs",
-    "module": "CommonJS",
-    "target": "ES2017"
-  },
-  "include": ["./lib"]
+    "module": "CommonJS"
+  }
 }
