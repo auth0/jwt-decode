@@ -1,0 +1,4 @@
+{
+    "port": 3000,
+    "server": ["build", "static"]
+  }
