@@ -1,5 +1,17 @@
 # Change log
 
+## Version [4.0.0-beta.3](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.3)
+
+[Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.2..v4.0.0-beta.3)
+
+**Breaking changes**
+- Drop UMD bundle [\#193](https://github.com/auth0/jwt-decode/pull/193) ([frederikprijck](https://github.com/frederikprijck))
+
+**Changed**
+- Use modern JavaScript syntax [\#187](https://github.com/auth0/jwt-decode/pull/187) ([jonkoops](https://github.com/jonkoops))
+- Use ESNext as default module system [\#188](https://github.com/auth0/jwt-decode/pull/188) ([jonkoops](https://github.com/jonkoops))
+- Avoid using any bundlers but use tsc instead [\#192](https://github.com/auth0/jwt-decode/pull/192) ([frederikprijck](https://github.com/frederikprijck))
+
 ## Version [4.0.0-beta.2](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.2)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.1..v4.0.0-beta.2)
