@@ -1,0 +1,6 @@
+{
+  "port": 3000,
+  "watch": true,
+  "server": ["build", "static"],
+  "files": ["build", "static"]
+}
