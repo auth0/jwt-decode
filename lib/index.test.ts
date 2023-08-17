@@ -1,5 +1,5 @@
-import { jwtDecode, InvalidTokenError, JwtPayload } from "./../lib/index.js";
-import { describe, expect, it } from "@jest/globals";
+import { describe, expect, it } from "vitest";
+import { InvalidTokenError, JwtPayload, jwtDecode } from "./index.js";
 
 const token =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";

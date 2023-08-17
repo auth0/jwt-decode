@@ -23,11 +23,14 @@ jobs:
           name: Build
           command: npm run build
       - run:
-          name: Run Tests against browser
-          command: npm run test:browser
+          name: Run tests against Node.js
+          command: npm run test
       - run:
-          name: Run Tests against node
-          command: npm run test:node
+          name: Run tests against Chrome
+          command: npm run test -- --browser=chrome
+      - run:
+          name: Run tests against Firefox
+          command: npm run test -- --browser=firefox
 workflows:
   build-and-test:
     jobs:

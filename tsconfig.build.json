@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "include": ["./lib"],
+  "exclude": ["**/*.test.*"],
   "compilerOptions": {
     "target": "ES2017",
     "declaration": true
