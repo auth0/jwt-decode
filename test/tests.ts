@@ -64,9 +64,7 @@ describe("jwt-decode", () => {
     const badToken = null;
     expect(() => {
       jwtDecode(badToken as any, { header: true });
-    }).toThrow(
-      new InvalidTokenError("Invalid token specified: must be a string")
-    );
+    }).toThrow(new InvalidTokenError("Invalid token specified: must be a string"));
   });
 
   it("should throw InvalidTokenErrors when missing part #1", () => {
@@ -94,9 +92,7 @@ describe("jwt-decode", () => {
     const badToken = "FAKE_TOKEN";
     expect(() => {
       jwtDecode(badToken);
-    }).toThrow(
-      new InvalidTokenError("Invalid token specified: missing part #2")
-    );
+    }).toThrow(new InvalidTokenError("Invalid token specified: missing part #2"));
   });
 
   it("should throw InvalidTokenErrors when part #2 is not valid base64", () => {
