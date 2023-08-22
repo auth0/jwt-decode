@@ -9,12 +9,12 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./build/esm/index.js",
-        "types": "./build/esm/index.d.ts"
+        "types": "./build/esm/index.d.ts",
+        "default": "./build/esm/index.js"
       },
       "require": {
-        "default": "./build/cjs/index.js",
-        "types": "./build/cjs/index.d.ts"
+        "types": "./build/cjs/index.d.ts",
+        "default": "./build/cjs/index.js"
       }
     }
   },
