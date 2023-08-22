@@ -30,7 +30,7 @@ function b64DecodeUnicode(str: string) {
         code = "0" + code;
       }
       return "%" + code;
-    })
+    }),
   );
 }
 
@@ -58,7 +58,7 @@ function base64UrlDecode(str: string) {
 
 export function jwtDecode<T = JwtHeader>(
   token: string,
-  options: JwtDecodeOptions & { header: true }
+  options: JwtDecodeOptions & { header: true },
 ): T;
 export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
 export function jwtDecode(token: string, options?: JwtDecodeOptions) {
@@ -72,9 +72,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
   const part = token.split(".")[pos];
 
   if (typeof part !== "string") {
-    throw new InvalidTokenError(
-      `Invalid token specified: missing part #${(pos + 1)}`
-    );
+    throw new InvalidTokenError(`Invalid token specified: missing part #${pos + 1}`);
   }
 
   let decoded: string;
@@ -82,7 +80,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
     decoded = base64UrlDecode(part);
   } catch (e: any) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid base64 for part #${(pos + 1)} (${e.message})`
+      `Invalid token specified: invalid base64 for part #${pos + 1} (${e.message})`,
     );
   }
 
@@ -90,8 +88,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
     return JSON.parse(decoded);
   } catch (e: any) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid json for part #${(pos + 1)} (${e.message})`
+      `Invalid token specified: invalid json for part #${pos + 1} (${e.message})`,
     );
   }
 }
-

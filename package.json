@@ -34,6 +34,7 @@
     "prebuild": "rimraf build",
     "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json && echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
     "build:watch": "tsc -b --watch ./tsconfig.cjs.json ./tsconfig.esm.json && echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
+    "lint": "eslint ./lib ./test --ext ts",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom",
@@ -45,11 +46,20 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "browser-sync": "^2.29.3",
     "concurrently": "^8.2.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
     "jest": "^29.6.2",
     "jest-environment-jsdom": "^29.6.2",
     "jest-junit": "^16.0.0",
+    "prettier": "^3.0.2",
+    "pretty-quick": "^3.1.3",
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
@@ -60,5 +70,10 @@
   ],
   "engines": {
     "node": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
