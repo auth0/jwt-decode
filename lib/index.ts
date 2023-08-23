@@ -61,7 +61,10 @@ export function jwtDecode<T = JwtHeader>(
   options: JwtDecodeOptions & { header: true },
 ): T;
 export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-export function jwtDecode(token: string, options?: JwtDecodeOptions) {
+export function jwtDecode<T = JwtHeader | JwtPayload>(
+  token: string,
+  options?: JwtDecodeOptions,
+): T {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
@@ -85,7 +88,7 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
   }
 
   try {
-    return JSON.parse(decoded) as object;
+    return JSON.parse(decoded) as T;
   } catch (e) {
     throw new InvalidTokenError(
       `Invalid token specified: invalid json for part #${pos + 1} (${(e as Error).message})`,
