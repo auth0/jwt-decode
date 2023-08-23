@@ -25,7 +25,7 @@ InvalidTokenError.prototype.name = "InvalidTokenError";
 function b64DecodeUnicode(str: string) {
   return decodeURIComponent(
     atob(str).replace(/(.)/g, (m, p) => {
-      let code = p.charCodeAt(0).toString(16).toUpperCase();
+      let code = (p as string).charCodeAt(0).toString(16).toUpperCase();
       if (code.length < 2) {
         code = "0" + code;
       }
@@ -61,7 +61,10 @@ export function jwtDecode<T = JwtHeader>(
   options: JwtDecodeOptions & { header: true },
 ): T;
 export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
-export function jwtDecode(token: string, options?: JwtDecodeOptions) {
+export function jwtDecode<T = JwtHeader | JwtPayload>(
+  token: string,
+  options?: JwtDecodeOptions,
+): T {
   if (typeof token !== "string") {
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
@@ -78,17 +81,17 @@ export function jwtDecode(token: string, options?: JwtDecodeOptions) {
   let decoded: string;
   try {
     decoded = base64UrlDecode(part);
-  } catch (e: any) {
+  } catch (e) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid base64 for part #${pos + 1} (${e.message})`,
+      `Invalid token specified: invalid base64 for part #${pos + 1} (${(e as Error).message})`,
     );
   }
 
   try {
-    return JSON.parse(decoded);
-  } catch (e: any) {
+    return JSON.parse(decoded) as T;
+  } catch (e) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid json for part #${pos + 1} (${e.message})`,
+      `Invalid token specified: invalid json for part #${pos + 1} (${(e as Error).message})`,
     );
   }
 }
