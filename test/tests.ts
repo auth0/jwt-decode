@@ -49,7 +49,7 @@ describe("jwt-decode", () => {
   it("should throw InvalidTokenError on nonstring", () => {
     const badToken = null;
     expect(() => {
-      jwtDecode(badToken as any);
+      jwtDecode(badToken as unknown as string);
     }).toThrow(InvalidTokenError);
   });
 
@@ -63,7 +63,7 @@ describe("jwt-decode", () => {
   it("should throw InvalidTokenErrors when token is null", () => {
     const badToken = null;
     expect(() => {
-      jwtDecode(badToken as any, { header: true });
+      jwtDecode(badToken as unknown as string, { header: true });
     }).toThrow(new InvalidTokenError("Invalid token specified: must be a string"));
   });
 
