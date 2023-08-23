@@ -24,8 +24,8 @@ InvalidTokenError.prototype.name = "InvalidTokenError";
 
 function b64DecodeUnicode(str: string) {
   return decodeURIComponent(
-    atob(str).replace(/(.)/g, (match) => {
-      let code = match.charCodeAt(0).toString(16).toUpperCase();
+    atob(str).replace(/(.)/g, (m, p) => {
+      let code = (p as string).charCodeAt(0).toString(16).toUpperCase();
       if (code.length < 2) {
         code = "0" + code;
       }
