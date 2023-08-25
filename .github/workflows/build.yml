@@ -12,10 +12,9 @@ permissions:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
-  NODE_VERSION: 18
   CACHE_KEY: '${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}'
 
 jobs:
@@ -35,7 +34,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
+          cache: npm
 
       - name: Install dependencies
         run: npm ci --include=dev
@@ -46,17 +45,12 @@ jobs:
       - name: Lint
         run: npm run lint && npm run lint:package
         
-      - name: Run Tests against browser
+      - name: Run tests against browser
         run: npm run test:browser
         
-      - name: Run Tests against node
+      - name: Run tests against Node
         run: npm run test:node
 
-      - name: Save build artifacts
-        uses: actions/cache/save@v3
-        with:
-          path: .
-          key: ${{ env.CACHE_KEY }}
 
  
 
