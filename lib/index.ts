@@ -60,10 +60,7 @@ export function jwtDecode<T = JwtHeader>(
   token: string,
   options: JwtDecodeOptions & { header: true },
 ): T;
-export function jwtDecode<T = JwtPayload>(
-  token: string,
-  options?: JwtDecodeOptions,
-): T;
+export function jwtDecode<T = JwtPayload>(token: string, options?: JwtDecodeOptions): T;
 export function jwtDecode<T = JwtHeader | JwtPayload>(
   token: string,
   options?: JwtDecodeOptions,
@@ -78,9 +75,7 @@ export function jwtDecode<T = JwtHeader | JwtPayload>(
   const part = token.split(".")[pos];
 
   if (typeof part !== "string") {
-    throw new InvalidTokenError(
-      `Invalid token specified: missing part #${pos + 1}`,
-    );
+    throw new InvalidTokenError(`Invalid token specified: missing part #${pos + 1}`);
   }
 
   let decoded: string;
@@ -88,9 +83,7 @@ export function jwtDecode<T = JwtHeader | JwtPayload>(
     decoded = base64UrlDecode(part);
   } catch (e) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid base64 for part #${pos + 1} (${
-        (e as Error).message
-      })`,
+      `Invalid token specified: invalid base64 for part #${pos + 1} (${(e as Error).message})`,
     );
   }
 
@@ -98,9 +91,7 @@ export function jwtDecode<T = JwtHeader | JwtPayload>(
     return JSON.parse(decoded) as T;
   } catch (e) {
     throw new InvalidTokenError(
-      `Invalid token specified: invalid json for part #${pos + 1} (${
-        (e as Error).message
-      })`,
+      `Invalid token specified: invalid json for part #${pos + 1} (${(e as Error).message})`,
     );
   }
 }
