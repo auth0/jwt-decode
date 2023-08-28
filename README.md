@@ -1,6 +1,6 @@
 ![Browser library that helps decoding JWT tokens which are Base64Url encoded](https://cdn.auth0.com/website/sdks/banners/jwt-decode-banner.png)
 
-**IMPORTANT:** This library doesn't validate the token, any well formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Owin Bearer JWT](https://github.com/michaelnoonan/Auth0-Owin-JwtBearerAuthentication), etc.
+**IMPORTANT:** This library doesn't validate the token, any well-formed JWT can be decoded. You should validate the token in your server-side logic by using something like [express-jwt](https://github.com/auth0/express-jwt), [koa-jwt](https://github.com/stiang/koa-jwt), [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer), etc.
 
 ![Release](https://img.shields.io/npm/v/jwt-decode)
 ![Downloads](https://img.shields.io/npm/dw/jwt-decode)
@@ -24,10 +24,10 @@ Run `npm install jwt-decode` or `yarn add jwt-decode` to install the library.
 ### Usage
 
 ```js
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
-var token = "eyJ0eXAiO.../// jwt token";
-var decoded = jwt_decode(token);
+const token = "eyJ0eXAiO.../// jwt token";
+const decoded = jwtDecode(token);
 
 console.log(decoded);
 
@@ -40,7 +40,7 @@ console.log(decoded);
  */
 
 // decode header by passing in options (useful for when you need `kid` to verify a JWT):
-var decodedHeader = jwt_decode(token, { header: true });
+const decodedHeader = jwtDecode(token, { header: true });
 console.log(decodedHeader);
 
 /* prints:
@@ -67,36 +67,41 @@ Not adhering to the format will result in a `InvalidTokenError` with one of the 
 - `Invalid token specified: must be a string` => the token passed was not a string, this library only works on strings. 
 - `Invalid token specified: missing part #` => this probably means you are missing a dot (`.`) in the token 
 - `Invalid token specified: invalid base64 for part #` => the part could not be base64 decoded (the message should contain the error the base64 decoder gave)
-- `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however the decoded value was not valid json (the message should contain the error the json parser gave)
+- `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however, the decoded value was not valid JSON (the message should contain the error the JSON parser gave)
 
-#### Use with typescript
+#### Use with TypeScript
 
-The `jwt_decode` function will return an `unknown` type by default. You can specify what the expected return type should be by passing a type argument to the `jwt_decode` function.
+The return type of the `jwtDecode` function is determined by the `header` property of the object passed as the second argument. If omitted (or set to false), it'll use `JwtPayload`, when true it will use `JwtHeader`. 
+If needed, you can specify what the expected return type should be by passing a type argument to the `jwtDecode` function.
 
-The package also exports types for a `JwtHeader` and `JwtPayload` with some default claims. You can either use them as-is, or extend them to include non standard claims or properties.
+You can extend both `JwtHeader` and `JwtPayload` to include non-standard claims or properties.
 
 ```typescript
-import jwtDecode, { JwtPayload } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
-const token: string = "eyJhsw5c";
+const token = "eyJhsw5c";
 const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
 ```
 
 #### Use as a CommonJS package
 
 ```javascript
-const jwt_decode = require('jwt-decode');
+const { jwtDecode } = require('jwt-decode');
 ...
 ```
 
 #### Include with a script tag
 
-Copy the file `jwt-decode.js` from the `build/` folder to your project somewhere, then include like so:
+Copy the file `jwt-decode.js` from the root of the `build/esm` folder to your project somewhere, then import `jwtDecode` from it inside a script tag that's marked with `type="module"`:
 
 ```html
-<script src="jwt-decode.js"></script>
-```
+<script type="module">
+  import { jwtDecode } from "/path/to/jwt-decode.js";
 
+  const token = "eyJhsw5c";
+  const decoded = jwtDecode(token);
+</script>
+```
 
 ## Feedback
 

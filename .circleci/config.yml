@@ -23,16 +23,23 @@ jobs:
           name: Build
           command: npm run build
       - run:
-          name: Run Tests
-          command: npm run test
+          name: Lint
+          command: npm run lint && npm run lint:package
+      - run:
+          name: Run Tests against browser
+          command: npm run test:browser
+      - run:
+          name: Run Tests against node
+          command: npm run test:node
 workflows:
   build-and-test:
     jobs:
       - build:
           matrix:
             parameters:
-              node-version: ["14.20", "16.20", "18.16"]
+              node-version: ["16.20", "18.16", "20.4"]
       - ship/node-publish:
+          publish-command: npm publish --tag beta
           context:
             - publish-npm
             - publish-gh
@@ -40,5 +47,6 @@ workflows:
             branches:
               only:
                 - master
+                - beta
           requires:
             - build

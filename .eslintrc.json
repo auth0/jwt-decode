@@ -1,0 +1,24 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2017": true,
+    "mocha": true
+  },
+  "ignorePatterns": ["**/*.mjs", "**/*.js"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "import"],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "project": true
+  },
+  "rules": {
+    "import/no-default-export": "error",
+    "import/extensions": ["error", "always"]
+  }
+}
