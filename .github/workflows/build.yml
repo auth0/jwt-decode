@@ -1,0 +1,49 @@
+name: Build and Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, beta ]
+  pull_request:
+    branches: [ main, beta ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        node: [ 16, 18, 20 ]
+
+    name: Build Package (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build package
+        run: npm run build
+        
+      - name: Lint
+        run: npm run lint && npm run lint:package
+        
+      - name: Run tests against browser
+        run: npm run test:browser
+        
+      - name: Run tests against Node
+        run: npm run test:node
