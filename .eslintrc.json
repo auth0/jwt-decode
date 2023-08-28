@@ -1,24 +1,27 @@
 {
-  "env": {
-    "node": true,
-    "commonjs": true,
-    "es2017": true,
-    "mocha": true
-  },
-  "ignorePatterns": ["**/*.mjs", "**/*.js"],
+  "ignorePatterns": ["build", "coverage"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@typescript-eslint", "import"],
-  "parserOptions": {
-    "ecmaVersion": 9,
-    "project": true
+  "overrides": [
+    {
+      "files": ["lib/**", "test/**"],
+      "rules": {
+        "import/no-default-export": "error"
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    }
   },
-  "rules": {
-    "import/no-default-export": "error",
-    "import/extensions": ["error", "always"]
+  "parserOptions": {
+    "project": true
   }
 }
