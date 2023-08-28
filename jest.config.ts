@@ -8,10 +8,7 @@ const jestConfig: JestConfigWithTsJest = {
   testMatch: ["**/test/**/*.test.ts", "**/test/tests.ts"],
   coverageProvider: "v8",
   coveragePathIgnorePatterns: ["/node_modules/", "./test"],
-  reporters: [
-    "default",
-    ["jest-junit", { outputDirectory: "test-results/jest" }],
-  ],
+  reporters: ["default", ["jest-junit", { outputDirectory: "test-results/jest" }]],
   coverageReporters: ["lcov", "text", "text-summary"],
 };
 
