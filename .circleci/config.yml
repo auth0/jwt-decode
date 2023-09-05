@@ -14,9 +14,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update NPM version
-          command: sudo npm install -g npm@latest
-      - run:
           name: Install dependencies
           command: npm install
       - run:
@@ -37,7 +34,7 @@ workflows:
       - build:
           matrix:
             parameters:
-              node-version: ["16.20", "18.16", "20.4"]
+              node-version: ["18.16", "20.4"]
       - ship/node-publish:
           publish-command: npm publish --tag beta
           context:
