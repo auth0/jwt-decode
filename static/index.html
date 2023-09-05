@@ -27,19 +27,19 @@
       try {
         jwtDecode("FAKE_TOKEN");
       } catch (error) {
-        document.querySelector("#js-error1").textContent = prettyJSON(error);
+        document.querySelector("#js-error1").textContent = error.message;
       }
 
       try {
         jwtDecode("FAKE.TOKEN2");
       } catch (error) {
-        document.querySelector("#js-error2").textContent = prettyJSON(error);
+        document.querySelector("#js-error2").textContent = error.message;
       }
 
       try {
         jwtDecode("FAKE.TOKEN");
       } catch (error) {
-        document.querySelector("#js-error3").textContent = prettyJSON(error);
+        document.querySelector("#js-error3").textContent = error.message;
       }
 
       function prettyJSON(data) {
