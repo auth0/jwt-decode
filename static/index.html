@@ -1,64 +1,50 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>Auth0 - JWT-Decode</title>
-    <meta charset="utf-8" />
   </head>
-
   <body>
-    <h2>decoded:</h2>
-    <pre><code class="js-decoded"></code></pre>
-    <pre><code class="js-error1"></code></pre>
-    <pre><code class="js-error2"></code></pre>
-    <pre><code class="js-error3"></code></pre>
-
+    <h2>Decoded:</h2>
+    <pre><code id="js-decoded"></code></pre>
+    <pre><code id="js-error1"></code></pre>
+    <pre><code id="js-error2"></code></pre>
+    <pre><code id="js-error3"></code></pre>
+    <script type="importmap">
+      {
+        "imports": {
+          "jwt-decode": "/esm/index.js"
+        }
+      }
+    </script>
     <script type="module">
-      import { jwtDecode } from "/esm/index.js";
-      var token =
+      import { jwtDecode } from "jwt-decode";
+
+      const token =
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo";
-      var decoded = jwtDecode(token);
-      document.querySelector(".js-decoded").innerHTML = JSON.stringify(
-        decoded,
-        null,
-        4
-      );
+      document.querySelector("#js-decoded").textContent = prettyJSON(jwtDecode(token));
 
-      var tokenError1 =
-              "FAKE_TOKEN";
       try {
-        var decoded = jwtDecode(tokenError1);
-      } catch (e) {
-        document.querySelector(".js-error1").innerHTML = JSON.stringify(
-                e,
-                null,
-                4
-        );
+        jwtDecode("FAKE_TOKEN");
+      } catch (error) {
+        document.querySelector("#js-error1").textContent = prettyJSON(error);
       }
 
-      var tokenError2 =
-              "FAKE.TOKEN2";
       try {
-        var decoded = jwtDecode(tokenError2);
-      } catch (e) {
-        document.querySelector(".js-error2").innerHTML = JSON.stringify(
-                e,
-                null,
-                4
-        );
+        jwtDecode("FAKE.TOKEN2");
+      } catch (error) {
+        document.querySelector("#js-error2").textContent = prettyJSON(error);
       }
 
-      var tokenError3 =
-              "FAKE.TOKEN";
       try {
-        var decoded = jwtDecode(tokenError3);
-      } catch (e) {
-        document.querySelector(".js-error3").innerHTML = JSON.stringify(
-                e,
-                null,
-                4
-        );
+        jwtDecode("FAKE.TOKEN");
+      } catch (error) {
+        document.querySelector("#js-error3").textContent = prettyJSON(error);
       }
 
+      function prettyJSON(data) {
+        return JSON.stringify(data, null, 2);
+      }
     </script>
   </body>
 </html>
