@@ -5,6 +5,7 @@ const jestConfig: JestConfigWithTsJest = {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
+  coverageProvider: "v8",
 };
 
 export default jestConfig;
