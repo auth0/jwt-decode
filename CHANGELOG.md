@@ -1,5 +1,15 @@
 # Change log
 
+## Version [4.0.0-beta.4](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.4)
+
+[Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.3..v4.0.0-beta.4)
+
+**Breaking changes**
+- Raise minimum Node.js version to 18 [\#209](https://github.com/auth0/jwt-decode/pull/209) ([jonkoops](https://github.com/jonkoops))
+
+**Fixed**
+- fix default condition should be the last one [\#199](https://github.com/auth0/jwt-decode/pull/199) ([frederikprijck](https://github.com/frederikprijck))
+
 ## Version [4.0.0-beta.3](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.3)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.2..v4.0.0-beta.3)

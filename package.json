@@ -1,6 +1,6 @@
 {
   "name": "jwt-decode",
-  "version": "4.0.0-beta.3",
+  "version": "4.0.0-beta.4",
   "description": "Decode JWT tokens, mostly useful for browser applications.",
   "type": "module",
   "main": "build/cjs/index.js",
@@ -31,9 +31,9 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm run build:watch\" \"npm run dev:server\"",
     "dev:server": "browser-sync start --config bs-config.json",
-    "prebuild": "rimraf build",
-    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json && echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
-    "build:watch": "tsc -b --watch ./tsconfig.cjs.json ./tsconfig.esm.json && echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
+    "prebuild": "shx rm -rf ./build && shx mkdir -p ./build/cjs && shx echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
+    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "build:watch": "npm run build -- --watch",
     "lint": "eslint .",
     "lint:package": "publint",
     "test": "npm run test:node && npm run test:browser",
@@ -63,7 +63,7 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
     "publint": "^0.2.2",
-    "rimraf": "^5.0.1",
+    "shx": "^0.3.4",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
@@ -72,7 +72,7 @@
     "build"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
