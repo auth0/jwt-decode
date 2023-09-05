@@ -1,4 +1,4 @@
-import { jwtDecode, InvalidTokenError, JwtPayload } from "./../lib/index.js";
+import { jwtDecode, InvalidTokenError, JwtPayload } from "./index.js";
 import { describe, expect, it } from "@jest/globals";
 
 const token =
