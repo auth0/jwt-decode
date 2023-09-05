@@ -10,7 +10,7 @@
   ],
   "overrides": [
     {
-      "files": ["lib/**", "test/**"],
+      "files": ["lib/**"],
       "rules": {
         "import/no-default-export": "error"
       }
