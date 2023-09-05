@@ -6,6 +6,7 @@ const jestConfig: JestConfigWithTsJest = {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
   coverageProvider: "v8",
+  coverageReporters: ["lcov", "text", "text-summary"],
 };
 
 export default jestConfig;
