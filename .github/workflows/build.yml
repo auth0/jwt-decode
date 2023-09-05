@@ -19,7 +19,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node: [ 16, 18, 20 ]
+        node: [ 18, 20 ]
 
     name: Build Package (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
