@@ -15,11 +15,6 @@ A new version of the library, including a couple of improvements:
 - Drop manual UMD bundle creation in `index.standalone.ts`, but rely on rollup instead.
 - Infer JwtPayload and JwtHeader default types from the `header` argument by using overloads.
 
-**Additionally, this PR ensures the file size is decreased:**
-
-- **ESM and CJS decreased by 22%**
-- **UMD decreased by 37%**
-
 Even though some users might experience breaking changes, mostly because of the `exports` field, the majority should be able to update without making any changes, assuming the SDK is used in environments with support for `atob`.
 
 ## Version [4.0.0-beta.4](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.4)
