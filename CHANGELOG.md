@@ -17,6 +17,15 @@ A new version of the library, including a couple of improvements:
 
 Even though some users might experience breaking changes, mostly because of the `exports` field, the majority should be able to update without making any changes, assuming the SDK is used in environments with support for `atob`.
 
+### Migration to v4.0.0
+
+The `jwtDecode` function is now no longer the default export, and is instead provided as a named export. Make sure to update your code in places where you are importing this function:
+
+```diff
+-import jwtDecodefrom "jwt-decode";
++import { jwtDecode } from "jwt-decode";
+```
+
 ## Version [4.0.0-beta.4](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.4)
 
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.3..v4.0.0-beta.4)
