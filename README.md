@@ -65,7 +65,7 @@ import "core-js/stable/atob";
 
 Some environments might not work well with polyfills and require you to import the pure function and expose it yourself instead (e.g. React Native):
 
-```
+```js
 import atob from "core-js-pure/stable/atob";
 
 global.atob = atob;
