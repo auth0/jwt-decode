@@ -57,14 +57,18 @@ console.log(decodedHeader);
 
 This library relies on `atob()`, which is a global function available on [all modern browsers as well as every supported node environment](https://developer.mozilla.org/en-US/docs/Web/API/atob#browser_compatibility).
 
-In order to use `jwt-decode` in an environment that has no access to `atob()` (e.g. React Native), ensure to provide the corresponding polyfill in your application:
+In order to use `jwt-decode` in an environment that has no access to `atob()`, ensure to provide the corresponding polyfill in your application:
 
 ```js
 import "core-js/stable/atob";
-import { jwtDecode } from "jwt-decode";
+```
 
-const token = "eyJ0eXAiO.../// jwt token";
-const decoded = jwtDecode(token);
+Some environments might not work well with polyfills and require you to import the pure function and expose it yourself instead (e.g. React Native):
+
+```
+import atob from "core-js-pure/stable/atob";
+
+global.atob = atob;
 ```
 
 ## Errors
