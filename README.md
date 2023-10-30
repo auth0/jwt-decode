@@ -21,6 +21,18 @@ Install with NPM or Yarn.
 
 Run `npm install jwt-decode` or `yarn add jwt-decode` to install the library.
 
+
+### React Native
+
+Since the runtime used by React Native [does not have support](https://github.com/facebook/hermes/issues/1178) for the global [`atob()`](https://developer.mozilla.org/en-US/docs/Web/API/atob) function that is required for `jwt-decode` to function, users of React Native will have to include a polyfill to add this function to their environment. For this we recommend to use [`core-js`](https://github.com/zloirock/core-js#readme), a popular library made specifically for this purpose.
+
+Make sure to import the required polyfills before importing `jwt-decode`, preferably in the file that is the entrypoint of your application:
+
+```js
+import "core-js/stable/atob";
+import { jwtDecode } from "jwt-decode";
+```
+
 ### Usage
 
 ```js
