@@ -85,6 +85,9 @@ const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload typ
 
 #### Use as a CommonJS package
 
+> [!WARNING]
+> The CommonJS distribution is deprecated, and will be removed some time in the future. To avoid breaking changes it is recommended to use the ESM version instead.
+
 ```javascript
 const { jwtDecode } = require('jwt-decode');
 ...

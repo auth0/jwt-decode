@@ -33,6 +33,7 @@
     "dev:server": "browser-sync start --config bs-config.json",
     "prebuild": "shx rm -rf ./build && shx mkdir -p ./build/cjs && shx echo '{\"type\": \"commonjs\"}'> build/cjs/package.json",
     "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "postbuild": "shx cat ./deprecate-cjs.js >> ./build/cjs/index.js",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint .",
     "lint:package": "publint",
