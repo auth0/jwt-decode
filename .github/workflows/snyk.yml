@@ -10,7 +10,6 @@ on:
   push:
     branches:
       - main
-      - frederikprijck-patch-2
   schedule:
     - cron: '30 0 1,15 * *'
 
