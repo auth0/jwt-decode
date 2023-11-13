@@ -66,7 +66,7 @@ import "core-js/stable/atob";
 Alternatively, you can also use [`base-64`](https://www.npmjs.com/package/base-64) and polyfill `global.atob` yourself:
 
 ```js
-import { decode } from 'base-64';
+import { decode } from "base-64";
 global.atob = decode;
 ```
 
