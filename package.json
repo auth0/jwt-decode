@@ -48,7 +48,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.23.2",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "browser-sync": "^2.29.3",
