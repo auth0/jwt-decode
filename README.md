@@ -53,6 +53,23 @@ console.log(decodedHeader);
 
 **Note:** A falsy or malformed token will throw an `InvalidTokenError` error; see below for more information on specific errors.
 
+## Polyfilling atob
+
+This library relies on `atob()`, which is a global function available on [all modern browsers as well as every supported node environment](https://developer.mozilla.org/en-US/docs/Web/API/atob#browser_compatibility).
+
+In order to use `jwt-decode` in an environment that has no access to `atob()` (e.g. [React Native](https://github.com/facebook/hermes/issues/1178)), ensure to provide the corresponding polyfill in your application by using [`core-js/stable/atob`](https://www.npmjs.com/package/core-js):
+
+```js
+import "core-js/stable/atob";
+```
+
+Alternatively, you can also use [`base-64`](https://www.npmjs.com/package/base-64) and polyfill `global.atob` yourself:
+
+```js
+import { decode } from "base-64";
+global.atob = decode;
+```
+
 ## Errors
 
 This library works with valid JSON web tokens. The basic format of these token is
