@@ -27,7 +27,6 @@ runs:
         registry-url: 'https://registry.npmjs.org'
 
     - name: Install dependencies
-      if: inputs.require-build == 'true'
       shell: bash
       run: npm ci --include=dev
 
