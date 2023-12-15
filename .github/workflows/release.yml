@@ -1,0 +1,25 @@
+name: Create npm and GitHub Release
+
+on:
+  pull_request:
+    types:
+      - closed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write # For publishing to npm using --provenance
+
+### TODO: Replace instances of './.github/workflows/' w/ `auth0/dx-sdk-actions/workflows/` and append `@latest` after the common `dx-sdk-actions` repo is made public.
+### TODO: Also remove `get-prerelease`, `get-release-notes`, `get-version`, `npm-publish`, `release-create`, and `tag-exists` actions from this repo's .github/actions folder once the repo is public.
+### TODO: Also remove `npm-release` workflow from this repo's .github/workflows folder once the repo is public.
+
+jobs:
+  release:
+    uses: ./.github/workflows/npm-release.yml
+    with:
+      node-version: 18
+      require-build: true
+    secrets:
+      npm-token: ${{ secrets.NPM_TOKEN }}
+      github-token: ${{ secrets.GITHUB_TOKEN }}
