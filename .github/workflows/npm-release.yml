@@ -1,0 +1,80 @@
+name: Create npm and GitHub Release
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+      require-build:
+        default: true
+        type: string
+      release-directory:
+        default: './'
+        type: string
+    secrets:
+      github-token:
+        required: true
+      npm-token:
+        required: true
+
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/'))
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Get the version from the branch name
+      - id: get_version
+        uses: ./get-version
+
+      # Get the prerelease flag from the branch name
+      - id: get_prerelease
+        uses: ./get-prerelease
+        with:
+          version: ${{ steps.get_version.outputs.version }}
+
+      # Get the release notes
+      - id: get_release_notes
+        uses: ./get-release-notes
+        with:
+          token: ${{ secrets.github-token }}
+          version: ${{ steps.get_version.outputs.version }}
+          repo_owner: ${{ github.repository_owner }}
+          repo_name: ${{ github.event.repository.name }}
+
+      # Check if the tag already exists
+      - id: tag_exists
+        uses: ./tag-exists
+        with:
+          tag: ${{ steps.get_version.outputs.version }}
+          token: ${{ secrets.github-token }}
+
+      # If the tag already exists, exit with an error
+      - if: steps.tag_exists.outputs.exists == 'true'
+        run: exit 1
+
+      # Publish the release to our package manager
+      - uses: ./npm-publish
+        with:
+          node-version: ${{ inputs.node-version }}
+          require-build: ${{ inputs.require-build }}
+          version: ${{ steps.get_version.outputs.version }}
+          npm-token: ${{ secrets.npm-token }}
+          release-directory: ${{ inputs.release-directory }}
+
+      # Create a release for the tag
+      - uses: ./release-create
+        with:
+          token: ${{ secrets.github-token }}
+          name: ${{ steps.get_version.outputs.version }}
+          body: ${{ steps.get_release_notes.outputs.release-notes }}
+          tag: ${{ steps.get_version.outputs.version }}
+          commit: ${{ github.sha }}
+          prerelease: ${{ steps.get_prerelease.outputs.prerelease }}

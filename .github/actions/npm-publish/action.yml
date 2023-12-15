@@ -1,0 +1,53 @@
+name: Publish release to npm
+
+inputs:
+  node-version:
+    required: true
+  npm-token:
+    required: true
+  version:
+    required: true
+  require-build:
+    default: true
+  release-directory:
+    default: './'
+
+runs:
+  using: composite
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      if: inputs.require-build == 'true'
+      shell: bash
+      run: npm ci --include=dev
+
+    - name: Build package
+      if: inputs.require-build == 'true'
+      shell: bash
+      run: npm run build
+
+    - name: Publish release to NPM
+      shell: bash
+      working-directory: ${{ inputs.release-directory }}
+      run: |
+        if [[ "${VERSION}" == *"beta"* ]]; then
+          TAG="beta"
+        elif [[ "${VERSION}" == *"alpha"* ]]; then
+          TAG="alpha"
+        else
+          TAG="latest"
+        fi
+        npm publish --provenance --tag $TAG
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
+        VERSION: ${{ inputs.version }}
