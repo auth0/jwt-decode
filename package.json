@@ -40,7 +40,7 @@
     "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom",
     "prepack": "npm run build",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "author": "Jose F. Romaniello <jfromaniello@gmail.com>",
   "contributors": [
