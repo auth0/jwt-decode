@@ -48,7 +48,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^7.1.1",
     "browser-sync": "^3.0.2",
     "concurrently": "^8.2.0",
