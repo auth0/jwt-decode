@@ -14,7 +14,7 @@ inputs:
 
 outputs:
   exists:
-    description: 'Whether the tag exists or not'
+    description: "Whether the tag exists or not"
     value: ${{ steps.tag-exists.outputs.EXISTS }}
 
 runs:

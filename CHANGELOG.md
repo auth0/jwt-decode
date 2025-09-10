@@ -31,9 +31,11 @@ The `jwtDecode` function is now no longer the default export, and is instead pro
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.3..v4.0.0-beta.4)
 
 **Breaking changes**
+
 - Raise minimum Node.js version to 18 [\#209](https://github.com/auth0/jwt-decode/pull/209) ([jonkoops](https://github.com/jonkoops))
 
 **Fixed**
+
 - fix default condition should be the last one [\#199](https://github.com/auth0/jwt-decode/pull/199) ([frederikprijck](https://github.com/frederikprijck))
 
 ## Version [4.0.0-beta.3](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.3)
@@ -41,9 +43,11 @@ The `jwtDecode` function is now no longer the default export, and is instead pro
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.2..v4.0.0-beta.3)
 
 **Breaking changes**
+
 - Drop UMD bundle [\#193](https://github.com/auth0/jwt-decode/pull/193) ([frederikprijck](https://github.com/frederikprijck))
 
 **Changed**
+
 - Use modern JavaScript syntax [\#187](https://github.com/auth0/jwt-decode/pull/187) ([jonkoops](https://github.com/jonkoops))
 - Use ESNext as default module system [\#188](https://github.com/auth0/jwt-decode/pull/188) ([jonkoops](https://github.com/jonkoops))
 - Avoid using any bundlers but use tsc instead [\#192](https://github.com/auth0/jwt-decode/pull/192) ([frederikprijck](https://github.com/frederikprijck))
@@ -53,10 +57,12 @@ The `jwtDecode` function is now no longer the default export, and is instead pro
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.1..v4.0.0-beta.2)
 
 **Changed**
+
 - Avoid using default exports [\#175](https://github.com/auth0/jwt-decode/pull/175) ([frederikprijck](https://github.com/frederikprijck))
 - Make options optional no default function parameter initializer [\#179](https://github.com/auth0/jwt-decode/pull/179) ([cristobal](https://github.com/cristobal))
 
 **Fixed**
+
 - Ensure types are bundled and correctly linked [\#174](https://github.com/auth0/jwt-decode/pull/174) ([jonkoops](https://github.com/jonkoops))
 
 ## Version [4.0.0-beta.1](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.1)
@@ -64,6 +70,7 @@ The `jwtDecode` function is now no longer the default export, and is instead pro
 [Full Changelog](https://github.com/auth0/jwt-decode/compare/v4.0.0-beta.0..v4.0.0-beta.1)
 
 **Fixed**
+
 - Ensure build is run on prepack [\#167](https://github.com/auth0/jwt-decode/pull/167) ([frederikprijck](https://github.com/frederikprijck))
 
 ## Version [4.0.0-beta.0](https://github.com/auth0/jwt-decode/releases/tag/v4.0.0-beta.0)
