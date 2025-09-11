@@ -35,6 +35,11 @@ function b64DecodeUnicode(str: string) {
 }
 
 function base64UrlDecode(str: string) {
+  if ("fromBase64" in Uint8Array && typeof Uint8Array.fromBase64 === "function") {
+    const bytes = Uint8Array.fromBase64(str, { alphabet: "base64url" }) as Uint8Array;
+    return new TextDecoder().decode(bytes);
+  }
+
   let output = str.replace(/-/g, "+").replace(/_/g, "/");
   switch (output.length % 4) {
     case 0:
