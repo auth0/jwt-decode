@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/auth0/jwt-decode"
+    "url": "git+https://github.com/auth0/jwt-decode.git"
   },
   "url": "https://github.com/auth0/jwt-decode/issues",
   "homepage": "https://github.com/auth0/jwt-decode#readme",
@@ -36,6 +36,7 @@
     "build:watch": "npm run build -- --watch",
     "lint": "eslint .",
     "lint:package": "publint",
+    "format:check": "prettier . --check",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:browser": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage --testEnvironment=jsdom",
@@ -48,25 +49,23 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@eslint/js": "^9.35.0",
     "browser-sync": "^3.0.2",
     "concurrently": "^9.2.0",
-    "eslint": "^8.48.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-import-resolver-typescript": "^3.6.0",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "husky": "^9.0.11",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.6.2",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.0.2",
+    "jiti": "^2.5.1",
+    "lint-staged": "^16.1.6",
+    "prettier": "^3.6.2",
     "publint": "^0.3.12",
     "shx": "^0.4.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "typescript-eslint": "^8.43.0"
   },
   "files": [
     "build"
@@ -75,6 +74,10 @@
     "node": ">=18"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix"
+    "!(*.ts)": "prettier --write --ignore-unknown",
+    "*.ts": [
+      "eslint --cache  --fix",
+      "prettier --write"
+    ]
   }
 }

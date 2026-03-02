@@ -7,7 +7,7 @@ on:
     branches: ["master", "main"]
 
   schedule:
-    - cron: '30 0 1,15 * *'
+    - cron: "30 0 1,15 * *"
 
 jobs:
   semgrep:

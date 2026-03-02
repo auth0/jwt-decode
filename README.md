@@ -32,10 +32,10 @@ const decoded = jwtDecode(token);
 console.log(decoded);
 
 /* prints:
- * { 
+ * {
  *   foo: "bar",
  *   exp: 1393286893,
- *   iat: 1393268893  
+ *   iat: 1393268893
  * }
  */
 
@@ -44,9 +44,9 @@ const decodedHeader = jwtDecode(token, { header: true });
 console.log(decodedHeader);
 
 /* prints:
- * { 
+ * {
  *   typ: "JWT",
- *   alg: "HS256" 
+ *   alg: "HS256"
  * }
  */
 ```
@@ -73,22 +73,24 @@ global.atob = decode;
 ## Errors
 
 This library works with valid JSON web tokens. The basic format of these token is
+
 ```
 [part1].[part2].[part3]
 ```
+
 All parts are supposed to be valid base64 (url) encoded json.
 Depending on the `{ header: <option> }` option it will decode part 1 (only if header: true is specified) or part 2 (default)
 
 Not adhering to the format will result in a `InvalidTokenError` with one of the following messages:
 
-- `Invalid token specified: must be a string` => the token passed was not a string, this library only works on strings. 
-- `Invalid token specified: missing part #` => this probably means you are missing a dot (`.`) in the token 
+- `Invalid token specified: must be a string` => the token passed was not a string, this library only works on strings.
+- `Invalid token specified: missing part #` => this probably means you are missing a dot (`.`) in the token
 - `Invalid token specified: invalid base64 for part #` => the part could not be base64 decoded (the message should contain the error the base64 decoder gave)
 - `Invalid token specified: invalid json for part #` => the part was correctly base64 decoded, however, the decoded value was not valid JSON (the message should contain the error the JSON parser gave)
 
 #### Use with TypeScript
 
-The return type of the `jwtDecode` function is determined by the `header` property of the object passed as the second argument. If omitted (or set to false), it'll use `JwtPayload`, when true it will use `JwtHeader`. 
+The return type of the `jwtDecode` function is determined by the `header` property of the object passed as the second argument. If omitted (or set to false), it'll use `JwtPayload`, when true it will use `JwtHeader`.
 If needed, you can specify what the expected return type should be by passing a type argument to the `jwtDecode` function.
 
 You can extend both `JwtHeader` and `JwtPayload` to include non-standard claims or properties.

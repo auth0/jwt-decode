@@ -1,9 +1,8 @@
 {
+  "exclude": ["build", "coverage"],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "noEmitOnError": true
+    "target": "esnext",
+    "module": "nodenext",
+    "strict": true
   }
 }
