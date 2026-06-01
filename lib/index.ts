@@ -51,7 +51,7 @@ function base64UrlDecode(str: string) {
 
   try {
     return b64DecodeUnicode(output);
-  } catch (err) {
+  } catch {
     return atob(output);
   }
 }
@@ -69,7 +69,7 @@ export function jwtDecode<T = JwtHeader | JwtPayload>(
     throw new InvalidTokenError("Invalid token specified: must be a string");
   }
 
-  options ||= {};
+  options ??= {};
 
   const pos = options.header === true ? 0 : 1;
   const part = token.split(".")[pos];

@@ -10,7 +10,7 @@ on:
         default: true
         type: string
       release-directory:
-        default: './'
+        default: "./"
         type: string
     secrets:
       github-token:
