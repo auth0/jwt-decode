@@ -3,7 +3,8 @@
   "include": ["./lib"],
   "exclude": ["**/*.test.ts"],
   "compilerOptions": {
-    "target": "ES2017",
-    "declaration": true
+    "target": "es2017",
+    "declaration": true,
+    "noEmitOnError": true
   }
 }
