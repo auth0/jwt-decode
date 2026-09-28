@@ -1,0 +1,36 @@
+name: SCA Scan
+
+# Example: invoke the reusable sca-scan workflow from auth0/devsecops-tooling.
+# Reusable workflows are called at job level via `uses:`.
+# A remediation PR adds this workflow to your .github/workflows/ directory — review and merge it, adjusting if needed.
+#
+# Required org secrets (configured at org level in auth0/):
+#   SNYK_TOKEN            — Snyk organisation token
+#   SIGNAL_HANDLER_TOKEN  — scan-service telemetry auth
+#   SIGNAL_HANDLER_DOMAIN — scan-service endpoint domain
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── SCA / Snyk scan via reusable workflow ───────────────────────────────────
+  sca:
+    uses: auth0/devsecops-tooling/.github/workflows/sca-scan.yml@e29f26478db18ff0bcbe4bc447a8fbd54fbeec9e
+    # All inputs are optional — defaults shown. To override, uncomment `with:` and any line below.
+    # with:
+    #   node-version:     '16'
+    #   java-version:     '11'
+    #   go-version:       '1.22'
+    #   python-version:   '3.10'
+    #   ruby-version:     '4.0'
+    #   php-version:      '8.5'
+    #   dotnet-version:   '6'
+    #   dotnet-install-dir: '/usr/share/dotnet/'
+    #   snyk-version:     'v1.1292.0'
+    #   additional-arguments: ''   # extra Snyk CLI flags, e.g. '--severity-threshold=high'
+    #   pre-scan-commands:    ''   # shell commands to run before Snyk (e.g. 'npm ci')
+    #   runner:           'ubuntu-latest'
+    secrets: inherit
