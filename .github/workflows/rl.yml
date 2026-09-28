@@ -1,0 +1,117 @@
+name: RL Scan
+run-name: rl-scan
+
+# Reusable malware-scan workflow — call this from your release or CI pipeline via
+# workflow_call. The trigger lives in the calling workflow; the build steps are
+# defined here as a placeholder that you replace with your own toolchain setup,
+# compilation, and packaging steps before merging.
+#
+# Caller pattern (minimal):
+#   jobs:
+#     release-and-scan:
+#       uses: ./.github/workflows/rl.yml
+#       with:
+#         artifact-name: my-artifact
+#         artifact-path: dist/my-artifact.tgz
+#         version: ${{ github.event.release.tag_name }}
+#       secrets: inherit
+#
+# Artifact contract
+# ─────────────────
+# artifact-path MUST be a concrete file path — the action's internal existence
+# check uses [ -f ], which does NOT expand globs. A missing artifact fails the job.
+#
+# Required org secrets (configured at org level in auth0/):
+#   RLSECURE_LICENSE            — ReversingLabs license key
+#   RLSECURE_SITE_KEY           — ReversingLabs site key
+#   SIGNAL_HANDLER_TOKEN        — scan-service telemetry auth
+#   SIGNAL_HANDLER_DOMAIN       — scan-service endpoint domain
+#   PRODSEC_TOOLS_ARN           — AWS role ARN for ProdSec tools
+#   PRODSEC_TOOLS_USER          — ProdSec Python tools repo user
+#   PRODSEC_TOOLS_TOKEN         — ProdSec Python tools repo token
+#   PRODSEC_PYTHON_TOOLS_REPO   — ProdSec Python tools repo URL
+
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Name assigned to the artifact (used for RL reporting)
+        type: string
+        required: true
+      artifact-path:
+        description: Concrete file path of the built artifact on the runner — no globs
+        type: string
+        required: true
+      version:
+        description: Version string for the artifact (e.g. release tag)
+        type: string
+        required: true
+    secrets:
+      RLSECURE_LICENSE:
+        required: true
+      RLSECURE_SITE_KEY:
+        required: true
+      SIGNAL_HANDLER_TOKEN:
+        required: true
+      SIGNAL_HANDLER_DOMAIN:
+        required: true
+      PRODSEC_TOOLS_ARN:
+        required: true
+      PRODSEC_TOOLS_USER:
+        required: true
+      PRODSEC_TOOLS_TOKEN:
+        required: true
+      PRODSEC_PYTHON_TOOLS_REPO:
+        required: true
+
+jobs:
+  # ── Malware scan via ReversingLabs composite action ─────────────────────────
+  rl-scan:
+    name: RL Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # required for AWS OIDC federation (PRODSEC_TOOLS_ARN)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      # ── Build the artifact ────────────────────────────────────────────────────
+      # Replace this placeholder with ALL steps required to produce the artifact,
+      # including: runtime/toolchain setup (e.g. actions/setup-node, setup-go,
+      # setup-dotnet), dependency installation, compilation, and packaging (e.g.
+      # tar, zip, docker save). The final step must place the artifact at the
+      # path passed as inputs.artifact-path. The rl-scan action uses [ -f ] to
+      # verify the file exists — a missing or incorrect path fails the job.
+      - name: Build artifact   # TODO: replace with your toolchain setup + build + package steps
+        run: |
+          echo "TODO: replace this step with your build commands"
+          echo "      The built file must be at: ${{ inputs.artifact-path }}"
+
+      - name: Run RL malware scan
+        id: rl-scan-conclusion
+        uses: auth0/devsecops-tooling/.github/actions/rl-scan@e29f26478db18ff0bcbe4bc447a8fbd54fbeec9e
+        with:
+          # ── Artifact inputs ─────────────────────────────────────────────────
+          artifact-name: ${{ inputs.artifact-name }}
+          artifact-path: ${{ inputs.artifact-path }}
+          version: ${{ inputs.version }}
+          # ── Required secrets ────────────────────────────────────────────────
+          RLSECURE_LICENSE:          ${{ secrets.RLSECURE_LICENSE }}
+          RLSECURE_SITE_KEY:         ${{ secrets.RLSECURE_SITE_KEY }}
+          SIGNAL_HANDLER_TOKEN:      ${{ secrets.SIGNAL_HANDLER_TOKEN }}
+          SIGNAL_HANDLER_DOMAIN:     ${{ secrets.SIGNAL_HANDLER_DOMAIN }}
+          PRODSEC_TOOLS_ARN:         ${{ secrets.PRODSEC_TOOLS_ARN }}
+          PRODSEC_TOOLS_USER:        ${{ secrets.PRODSEC_TOOLS_USER }}
+          PRODSEC_TOOLS_TOKEN:       ${{ secrets.PRODSEC_TOOLS_TOKEN }}
+          PRODSEC_PYTHON_TOOLS_REPO: ${{ secrets.PRODSEC_PYTHON_TOOLS_REPO }}
+
+      - name: Gate on scan result
+        if: always()
+        env:
+          SCAN_STATUS: ${{ steps.rl-scan-conclusion.outputs.scan-status }}
+        run: |
+          if [ "$SCAN_STATUS" != "success" ]; then
+            echo "::error title=Malware::RL scan did not pass (status: ${SCAN_STATUS:-none})"
+            exit 1
+          fi
